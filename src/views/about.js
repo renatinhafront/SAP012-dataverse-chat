@@ -1,6 +1,6 @@
-import { renderItems } from './view.js';
-import { filterData, sortData, computeStats } from "./dataFunctions.js";
-import data from './data/dataset.js';
+import { renderItems } from "./Home.js";
+import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
+import data from '../data/dataset.js';
 
 const movieCard = document.querySelector("#root");
 const btnLimpar = document.querySelector("#btn-limpar");
@@ -21,12 +21,10 @@ window.onresize = alterarBanner;
 
 let movieData = [...data];
 
-
 document.addEventListener("DOMContentLoaded", () => {
   totalMovies(data);
   movieCard.appendChild(renderItems(data));
 })
-
 
 order.addEventListener("change", (e) => {
   const orderValue = e.target.value;
@@ -40,8 +38,6 @@ order.addEventListener("change", (e) => {
   movieCard.innerHTML = "";
   movieCard.appendChild(renderItems(movieData));
 })
-
-
 
 filters.addEventListener("change", (e) => {
   const value = e.target.value;

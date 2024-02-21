@@ -10,7 +10,8 @@ import data  from '../data/dataset.js';
 // import { renderView } from '../router';
 // import { filterData } from '../lib/dataFunctions.js';
 
-export function Home(props) {
+// Home(props)
+export function Home() {
   const viewEl = document.createElement('div');
   viewEl.appendChild(renderSubTitle())
   viewEl.appendChild(renderFilter())

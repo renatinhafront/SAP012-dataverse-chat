@@ -1,6 +1,6 @@
 import { renderItems } from "./Home.js";
 import { filterData, sortData, computeStats } from "../lib/dataFunctions.js";
-import data from '../data/dataset.js';
+import data  from '../data/dataset.js';
 
 const movieCard = document.querySelector("#root");
 const btnLimpar = document.querySelector("#btn-limpar");

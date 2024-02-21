@@ -3,10 +3,13 @@
 //   element.textContent = `Bem vindo a página de início ${props.name}!`;
 //   return element;
 // }
+
+
 import data  from '../data/dataset.js';
 // import About from './About.js'
 // import { renderView } from '../router';
 // import { filterData } from '../lib/dataFunctions.js';
+
 export function Home(props) {
   const viewEl = document.createElement('div');
   viewEl.appendChild(renderSubTitle())
@@ -14,10 +17,14 @@ export function Home(props) {
   viewEl.appendChild(renderItems(data))
   return viewEl;
 }
+
 export default Home;
+
+
 export const renderItems = (data) => {
   const ul = document.createElement('ul');
   ul.classList.add('container__card');
+
   data.forEach((item) => {
     ul.innerHTML += `
       <li itemscope itemtype="OsMelhoresFilmes" class="container__card">
@@ -36,11 +43,16 @@ export const renderItems = (data) => {
       </li>
     `;
   });
+
   return ul;
 };
+
+
+
 export const renderFilter = () => {
   const divFilter = document.createElement('div');
   divFilter.classList.add('filtros');
+
   divFilter.innerHTML += `
       <section class="section-search">
           <label for="filters" id="search-filters" class="filters">Filtrar por:</label>
@@ -62,14 +74,20 @@ export const renderFilter = () => {
             <option value="desc">Maior Nota</option>
             <option value="asc">Menor Nota</option>
         </select>
+
         <button id="btn-limpar" data-testid="button-clear">Limpar Filtros</button>
     </section>
+
+
       `;
+
   return divFilter;
 };
+
 export const renderSubTitle = () => {
   const divSubTitle = document.createElement('div');
   divSubTitle .classList.add('container__text');
+
   divSubTitle.innerHTML += `
       <h1>Principais escolhas</h1>
       <h2>O que assistir</h2>
@@ -77,5 +95,6 @@ export const renderSubTitle = () => {
       <span class="titles_length"> títulos</span>
       <button type="button">Key API</button>
       `;
+
   return divSubTitle;
 };

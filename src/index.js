@@ -41,3 +41,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
 //chamando as funções
 setRoutes(routes);
+
+

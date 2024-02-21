@@ -1,38 +1,43 @@
-let ROUTES = {};
-let rootEl;
+import Home from "./views/Home.js";
+import Chat from "./components/Chat.js";
+import ChatGroup from "./components/ChatGroup.js";
+import ErrorView from "./views/Error.js";
+import { setRootEl, setRoutes, onURLChange } from "./router.js"
 
-//função iniciada com SET faz atribuição de valor
-export const setRootEl = (element) => {
-  rootEl = element;
-};
+const routes = {
+  "/": Home,
+  "/chat": Chat,
+  "/chatGroup": ChatGroup,
+  "/error": ErrorView
+}
 
-export const setRoutes = (routes) => {
-  ROUTES = routes
-};
+//seletor
+const root = document.getElementById("root");
+// const link = document.getElementById("link")
 
-const queryStringToObject = (props) => {
-  const urlParams = new URLSearchParams (props);
-  return Object.fromEntries(urlParams)
-};
+//Listerner
+// link.addEventListener('click', () => {
+//   let pathname = "/"
+//   if (window.location.pathname === "/") {
+//     pathname = "/chat"
+//   }else if (window.location.pathname === "/chat") {
+//     pathname = "/chatGroup"
+//   }else {
+//     pathname = "/"
+//   }
+//   // alert("Alerta")
+//   navigateTo(pathname)
+// });
 
-export const renderView = (pathname, props = {name: " ", id: " "}) => {
-  rootEl.textContent = ""
-  let routeFunc = ROUTES[pathname]
-  if (!routeFunc) {
-    routeFunc = ROUTES["/error"]
-  }
+window.addEventListener('popstate', () => {
+  onURLChange(window.location);
+});
 
-  const params = queryStringToObject(props)
-  const element = routeFunc(params);
-  rootEl.appendChild(element);
-};
+window.addEventListener("DOMContentLoaded", () => {
+  setRootEl(root);
+  onURLChange(window.location);
+});
 
-export const navigateTo = (pathname = "/", props = { name: " ", id: " "}) => {
-  window.history.pushState(null, null, pathname);
-  renderView(pathname, props);
-};
 
-export const onURLChange = (location) => {
-  renderView(location.pathname, location.search);
-};
-
+//chamando as funções
+setRoutes(routes);

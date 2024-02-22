@@ -11,23 +11,8 @@ const routes = {
   "/error": ErrorView
 }
 
-//seletor
 const root = document.getElementById("root");
-// const link = document.getElementById("link")
 
-//Listerner
-// link.addEventListener('click', () => {
-//   let pathname = "/"
-//   if (window.location.pathname === "/") {
-//     pathname = "/chat"
-//   }else if (window.location.pathname === "/chat") {
-//     pathname = "/chatGroup"
-//   }else {
-//     pathname = "/"
-//   }
-//   // alert("Alerta")
-//   navigateTo(pathname)
-// });
 
 window.addEventListener('popstate', () => {
   onURLChange(window.location);
@@ -38,6 +23,4 @@ window.addEventListener("DOMContentLoaded", () => {
   onURLChange(window.location);
 });
 
-
-//chamando as funções
 setRoutes(routes);

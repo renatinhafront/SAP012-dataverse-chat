@@ -49,6 +49,16 @@ header {
   height: auto;
 }
 
+.div__error {
+  max-width: 1475px;
+  margin: 0 auto;
+}
+
+.img__error {
+  width: 100%;
+  height: auto;
+}
+
 /* Main styles */
 main {
   padding: 20px;
@@ -331,3 +341,5 @@ footer p {
   color: #fff;
   margin-right: 10px;
 }
+
+

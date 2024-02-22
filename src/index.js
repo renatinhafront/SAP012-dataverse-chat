@@ -1,4 +1,4 @@
-import Home from "./views/Home.js";
+import { Home } from "./views/Home.js";
 import Chat from "./components/Chat.js";
 import ChatGroup from "./components/ChatGroup.js";
 import ErrorView from "./views/Error.js";
@@ -11,23 +11,8 @@ const routes = {
   "/error": ErrorView
 }
 
-//seletor
 const root = document.getElementById("root");
-// const link = document.getElementById("link")
-
-//Listerner
-// link.addEventListener('click', () => {
-//   let pathname = "/"
-//   if (window.location.pathname === "/") {
-//     pathname = "/chat"
-//   }else if (window.location.pathname === "/chat") {
-//     pathname = "/chatGroup"
-//   }else {
-//     pathname = "/"
-//   }
-//   // alert("Alerta")
-//   navigateTo(pathname)
-// });
+const imgBanner = document.querySelector(".header-image");
 
 window.addEventListener('popstate', () => {
   onURLChange(window.location);
@@ -38,6 +23,13 @@ window.addEventListener("DOMContentLoaded", () => {
   onURLChange(window.location);
 });
 
+function alterarBanner() {
+  const larguraJanela = window.innerWidth;
+  if (larguraJanela < 550) {
+    imgBanner.src = 'img/banner-mobile.png';
+  }
+}
 
-//chamando as funções
+window.onload = alterarBanner;
+window.onresize = alterarBanner;
 setRoutes(routes);

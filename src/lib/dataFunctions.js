@@ -24,3 +24,8 @@ export const computeStats = (data) => {
   const count = stats.reduce((accumulator) => accumulator + 1, 0);
   return count;
 }
+
+export const totalMovies = (data, titlesLength) => {
+  const numberOfMovies = computeStats(data);
+  titlesLength.innerText = `${numberOfMovies} títulos`;
+}

@@ -16,7 +16,7 @@ export function Home() {
   viewEl.appendChild(itemsContainer);
   itemsContainer.appendChild(renderItems(currentData));
 
-  titlesLength.innerText = totalMovies(currentData)
+  titlesLength.innerText = totalMovies(currentData);
 
   order.addEventListener("change", (element) => {
     const orderValue = element.target.value;
@@ -51,7 +51,6 @@ export function Home() {
 
   return viewEl;
 }
-
 export default Home;
 
 export const renderItems = (dataMovie) => {
@@ -137,7 +136,8 @@ export const renderSubTitle = () => {
       `;
 
   const titlesLength = divSubTitle.querySelector(".titles_length");
-  return { subTitle: divSubTitle, titlesLength};
+
+  return { subTitle: divSubTitle, titlesLength };
 };
 
 document.addEventListener("DOMContentLoaded", () => {

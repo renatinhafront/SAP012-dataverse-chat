@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="utf-8" />
+
+<head>
+  <meta charset="utf-8" />
   <link rel="icon" href="./img/favicon.png" type="image/png" />
   <title>Best Movies - Dataverse Chat</title>
   <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header>
-      <div class="header-content">
-        <img class="header-image" src="./img/banner.png" alt="Header Image" />
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <img class="header-image" src="./img/banner.png" alt="Header Image" />
+    </div>
+    <section class="header-key-content">
+      <div>
+        <button class="btnKey">API KEY</button>
       </div>
-    </header>
-    <main>
+      <div>
+        <dialog class="dialogKey">
+          <p>Configure API KEY</p>
+          <input type="text" id="valueKey" placeholder="Digite aqui.."></input>
+          <button type="submit" class="btnSubmitKey">Gravar</button>
+      </div>
+      </dialog>
+    </section>
+  </header>
+  <main>
     <div id="root">
     </div>
   </main>
@@ -29,6 +43,7 @@
       <p>dataverse-chat© 2024 Desenvolvido por Lais e Renata</p>
     </div>
   </footer>
-    <script src="index.js" type="module"></script>
-  </body>
+  <script src="index.js" type="module"></script>
+</body>
+
 </html>

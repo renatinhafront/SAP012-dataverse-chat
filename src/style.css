@@ -60,6 +60,35 @@ header {
   padding: 0 400px 0 400px;
 }
 
+.btnKey {
+  text-align: right;
+}
+
+.dialogKey {
+  padding: 40px;
+  border-radius: 10px;
+  width: 400px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -150px;
+  line-height: 2em;
+}
+
+.btnSubmitKey {
+  font-size: 15px;
+  font-weight: normal;
+  border-radius: 5px;
+}
+
+#valueKey {
+  width: 300px;
+  height: 30px;
+}
+
+
 /* Main styles */
 main {
   padding: 20px;
@@ -67,13 +96,14 @@ main {
   max-width: 1475px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column; /* Adicionado para garantir que os itens estejam em coluna */
+  flex-direction: column;
+  /* Adicionado para garantir que os itens estejam em coluna */
 }
 
 nav {
   display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .filtros {
@@ -102,11 +132,11 @@ nav {
 .section-search,
 .section-filters {
   display: flex;
-    text-align: right;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  text-align: right;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 select#filters,
@@ -119,11 +149,13 @@ select#order {
   background: #f0f0f0;
   border-radius: 5px;
 }
+
 /* .section-search .section-filters select:focus {
   outline: none;
 } */
 .section-search .section-filters select::-ms-expand,
-.section-search, .section-filters select::-ms-expand {
+.section-search,
+.section-filters select::-ms-expand {
   width: 15px;
 }
 
@@ -222,6 +254,7 @@ label {
   font-size: 20px;
   color: #2d2d37;
 }
+
 #order {
   max-width: 170px;
   background-color: transparent;
@@ -233,9 +266,11 @@ label {
   margin-right: 40px;
   cursor: pointer;
 }
+
 a {
   text-decoration: none;
 }
+
 button {
   color: #111827;
   border: none;
@@ -256,7 +291,8 @@ button {
 .btn-verMais {
   width: 100%;
 }
-#btn-search{
+
+#btn-search {
   display: none;
 }
 
@@ -324,16 +360,16 @@ footer {
   background-color: #15161b;
   color: #fff;
   padding: 100px 0;
-  /* padding: 60px 0; */
+  padding: 45px 0;
   text-align: center;
-  /* position: absolute;
-  bottom: 0; */
   width: 100%;
 }
+
 footer p {
   font-size: 18px;
   color: #ffffff;
 }
+
 .container__footer {
   max-width: 800px;
   margin: 0 auto;
@@ -343,5 +379,3 @@ footer p {
   color: #fff;
   margin-right: 10px;
 }
-
-

@@ -6,7 +6,7 @@ export function Chat(props) {
   //   navigateTo("/error");
   // }
   const divChat = document.createElement('div');
-  divChat.classList.add('detail__initital');
+  divChat.classList.add('detail__initial');
   divChat.textContent = `Iniciar Conversa!`;
 
   const inputChatText = document.createElement('textarea');

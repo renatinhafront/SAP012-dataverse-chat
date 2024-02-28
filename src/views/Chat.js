@@ -38,13 +38,13 @@ export function Chat(props) {
   divTextareaChat.classList.add('item-chat');
   divTextareaChat.classList.add('textarea-chat');
   sectionTemplateChat.appendChild(divTextareaChat);
-  divTextareaChat.innerHTML = `<textarea readOnly=true cols="61" rows="25" style="resize:none"></textarea>`;
+  divTextareaChat.innerHTML = `<textarea class="txtarea__chat"readOnly=true cols="61" rows="25" style="resize:none"></textarea>`;
 
   const divInputChat = document.createElement('div');
   divInputChat.classList.add('item-chat');
   divInputChat.classList.add('input-chat');
   sectionTemplateChat.appendChild(divInputChat);
-  divInputChat.innerHTML = `<input type="text" placeholder="Escreva aqui sua pergunta.."><input`;
+  divInputChat.innerHTML = `<input class="inp__chat" type="text" placeholder="Escreva aqui sua pergunta.."></input>`;
 
   return divTemplateChat;
 }

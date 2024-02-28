@@ -388,7 +388,7 @@ footer p {
 /*GRID CHAT*/
 
 .grid-chat {
-  display: grid;
+  display: grid;-
   max-width: 400px;
 	margin: 0 auto;
 	border: 1px solid #ccc;
@@ -401,7 +401,7 @@ footer p {
 		"logo-chat detalhes-chat titulo-chat"
 		"logo-chat detalhes-chat textarea-chat"
     "descricao-chat descricao-chat textarea-chat"
-    "descricao-chat descricao-chat input"
+    "descricao-chat descricao-chat input-chat"
 		;
 }
 
@@ -409,11 +409,11 @@ footer p {
   margin: 5px;
 	text-align: center;
 	font-size: 1.5em;
+
 }
 
 .logo-chat {
 	grid-area: logo-chat;
-  max-height: 700px;
 }
 
 .titulo-chat {
@@ -440,15 +440,22 @@ footer p {
 
 .textarea-chat {
 	grid-area: textarea-chat;
-  border-radius: 5px;
-  background: #b8b4b4;
-
 }
 
-input {
+.txtarea__chat {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: #c3c5c7;
+}
+
+.input-chat {
 	grid-area: input-chat;
-  background: #d3cfce;
-  width: 506px;
-  height: 70px;
+}
+
+.inp__chat{
+  background: #e4e0df;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
 }

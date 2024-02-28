@@ -1,5 +1,6 @@
 import dataMovie from '../data/dataset.js';
 import { sortData, filterData, totalMovies } from "../lib/dataFunctions.js";
+import { navigateTo } from '../router.js';
 
 export function Home() {
   let currentData = dataMovie;
@@ -11,10 +12,12 @@ export function Home() {
   const { filter, order, filters, btnLimpar } = renderFilter();
   viewEl.appendChild(filter);
 
+  const { items } = renderItems(currentData);
+
   const itemsContainer = document.createElement('div');
   itemsContainer.id = "items-container";
   viewEl.appendChild(itemsContainer);
-  itemsContainer.appendChild(renderItems(currentData));
+  itemsContainer.appendChild(items);
 
   titlesLength.innerText = totalMovies(currentData);
 
@@ -46,7 +49,8 @@ export function Home() {
 
   function renderItemsInView(data) {
     itemsContainer.innerHTML = "";
-    itemsContainer.appendChild(renderItems(data));
+    const { items } = renderItems(data);
+    itemsContainer.appendChild(items);
   }
 
   return viewEl;
@@ -61,7 +65,7 @@ export const renderItems = (dataMovie) => {
     const li = document.createElement('li');
     li.setAttribute('itemscope', '');
     li.setAttribute('itemtype', 'OsMelhoresFilmes');
-    li.classList.add('container__card');
+    li.classList.add('container__card__item');
 
     li.innerHTML = `
       <div class="content__card">
@@ -82,9 +86,12 @@ export const renderItems = (dataMovie) => {
       </div>
     `;
     ul.appendChild(li);
+    li.addEventListener("click", () => navigateTo("/chat", {id: item.id}))
   });
 
-  return ul;
+  const btnVerMais = ul.querySelector(".btn-verMais");
+
+  return { items: ul, btnVerMais };
 };
 
 export const renderFilter = () => {

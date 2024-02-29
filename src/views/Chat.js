@@ -2,9 +2,6 @@ import dataMovie from '../data/dataset.js';
 // import { navigateTo } from '../router';
 
 export function Chat(props) {
-  // if (props.id) {
-  //   navigateTo("/error");
-  // }
   const item = dataMovie.find((movie) => movie.id === props.id);
 
   const divTemplateChat = document.createElement('div');

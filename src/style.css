@@ -49,6 +49,46 @@ header {
   height: auto;
 }
 
+.div__error {
+  max-width: 1475px;
+  margin: 0 auto;
+}
+
+.img__error {
+  width: 100%;
+  height: auto;
+  padding: 0 400px 0 400px;
+}
+
+.btnKey {
+  text-align: right;
+}
+
+.dialogKey {
+  padding: 40px;
+  border-radius: 10px;
+  width: 400px;
+  height: 200px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -100px;
+  margin-left: -150px;
+  line-height: 2em;
+}
+
+.btnSubmitKey {
+  font-size: 15px;
+  font-weight: normal;
+  border-radius: 5px;
+}
+
+#valueKey {
+  width: 300px;
+  height: 30px;
+}
+
+
 /* Main styles */
 main {
   padding: 20px;
@@ -56,13 +96,14 @@ main {
   max-width: 1475px;
   margin: 0 auto;
   display: flex;
-  flex-direction: column; /* Adicionado para garantir que os itens estejam em coluna */
+  flex-direction: column;
+  /* Adicionado para garantir que os itens estejam em coluna */
 }
 
 nav {
   display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .filtros {
@@ -91,11 +132,11 @@ nav {
 .section-search,
 .section-filters {
   display: flex;
-    text-align: right;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+  text-align: right;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 select#filters,
@@ -108,11 +149,13 @@ select#order {
   background: #f0f0f0;
   border-radius: 5px;
 }
+
 /* .section-search .section-filters select:focus {
   outline: none;
 } */
 .section-search .section-filters select::-ms-expand,
-.section-search, .section-filters select::-ms-expand {
+.section-search,
+.section-filters select::-ms-expand {
   width: 15px;
 }
 
@@ -203,14 +246,15 @@ dl {
 }
 
 .image__card {
-  width: 230px;
-  height: 340px;
+  width: 100%;
+  height: 100%;
 }
 
 label {
   font-size: 20px;
   color: #2d2d37;
 }
+
 #order {
   max-width: 170px;
   background-color: transparent;
@@ -222,9 +266,11 @@ label {
   margin-right: 40px;
   cursor: pointer;
 }
+
 a {
   text-decoration: none;
 }
+
 button {
   color: #111827;
   border: none;
@@ -245,7 +291,8 @@ button {
 .btn-verMais {
   width: 100%;
 }
-#btn-search{
+
+#btn-search {
   display: none;
 }
 
@@ -313,15 +360,16 @@ footer {
   background-color: #15161b;
   color: #fff;
   padding: 100px 0;
+  padding: 45px 0;
   text-align: center;
-  /* position: absolute;
-  bottom: 0; */
   width: 100%;
 }
+
 footer p {
   font-size: 18px;
   color: #ffffff;
 }
+
 .container__footer {
   max-width: 800px;
   margin: 0 auto;
@@ -330,4 +378,84 @@ footer p {
 .socialIcons a {
   color: #fff;
   margin-right: 10px;
+}
+
+.detail__initial {
+  display: grid;
+  resize: none;
+}
+
+/*GRID CHAT*/
+
+.grid-chat {
+  display: grid;-
+  max-width: 400px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+}
+
+.grid-template-chat {
+  grid-template-columns: 25% 25% 50%;
+	grid-template-rows: 50px 350px 50px 150px;
+	grid-template-areas:
+		"logo-chat detalhes-chat titulo-chat"
+		"logo-chat detalhes-chat textarea-chat"
+    "descricao-chat descricao-chat textarea-chat"
+    "descricao-chat descricao-chat input-chat"
+		;
+}
+
+.item-chat {
+  margin: 5px;
+	text-align: center;
+	font-size: 1.5em;
+
+}
+
+.logo-chat {
+	grid-area: logo-chat;
+}
+
+.titulo-chat {
+	grid-area: titulo-chat;
+}
+
+.description {
+ font-size: 60%;
+ text-align: left;
+ padding: 2px;
+}
+.descricao-chat {
+	grid-area: descricao-chat;
+
+}
+
+.detalhes-chat {
+	grid-area: detalhes-chat;
+  font-size: 90%;
+  text-align: left;
+  line-height: 2em;
+  padding: 3px;
+}
+
+.textarea-chat {
+	grid-area: textarea-chat;
+}
+
+.txtarea__chat {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background: #c3c5c7;
+}
+
+.input-chat {
+	grid-area: input-chat;
+}
+
+.inp__chat{
+  background: #e4e0df;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
 }

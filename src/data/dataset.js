@@ -11,6 +11,7 @@ export default [
       "imDbRating": 9.3,
       "directorsName": "Frank Darabont",
       "movieStars": "Tim Robbins, Morgan Freeman",
+      "isOnline": false,
       "movieGender": "Drama"
     }
   },
@@ -26,6 +27,7 @@ export default [
       "imDbRating": 9.2,
       "directorsName": "Francis Ford Coppola",
       "movieStars": "Marlon Brando, Al Pacino",
+      "isOnline": true,
       "movieGender": "Policial, Drama"
     }
   },
@@ -41,6 +43,7 @@ export default [
       "imDbRating": 9.0,
       "directorsName": "Christopher Nolan",
       "movieStars": "Christian Bale, Heath Ledger",
+      "isOnline": false,
       "movieGender": "Policial, Drama"
     }
   },
@@ -56,6 +59,7 @@ export default [
       "imDbRating": 9.0,
       "directorsName": "Francis Ford Coppola",
       "movieStars": "Al Pacino, Robert De Niro",
+      "isOnline": true,
       "movieGender": "Policial, Drama"
     }
   },
@@ -71,6 +75,7 @@ export default [
       "imDbRating": 9.0,
       "directorsName": "Sidney Lumet",
       "movieStars": "Henry Fonda, Lee J. Cobb",
+      "isOnline": false,
       "movieGender": "Policial, Drama"
     }
   },
@@ -86,6 +91,7 @@ export default [
       "imDbRating": 8.9,
       "directorsName": "Steven Spielberg",
       "movieStars": "Liam Neeson, Ben Kingsley",
+      "isOnline": true,
       "movieGender": "Biografia, Drama"
     }
   },
@@ -101,6 +107,7 @@ export default [
       "imDbRating": 8.9,
       "directorsName": "Peter Jackson",
       "movieStars": "Elijah Wood, Viggo Mortensen",
+      "isOnline": false,
       "movieGender": "Aventura, Fantasia"
     }
   },
@@ -116,6 +123,7 @@ export default [
       "imDbRating": 8.9,
       "directorsName": "Quentin Tarantino",
       "movieStars": "John Travolta, Samuel L. Jackson",
+      "isOnline": true,
       "movieGender": "Policial, Drama"
     }
   },
@@ -131,6 +139,7 @@ export default [
       "imDbRating": 8.8,
       "directorsName": "Peter Jackson",
       "movieStars": "Elijah Wood, Ian McKellen",
+      "isOnline": true,
       "movieGender": "Aventura, Fantasia"
 
     }
@@ -147,6 +156,7 @@ export default [
       "imDbRating": 8.8,
       "directorsName": "Sergio Leone",
       "movieStars": "Clint Eastwood, Lee Van Cleef",
+      "isOnline": true,
       "movieGender": "Aventura, Faroeste"
     }
   },
@@ -162,6 +172,7 @@ export default [
       "imDbRating": 8.8,
       "directorsName": "Robert Zemeckis",
       "movieStars": "Tom Hanks, Robin Wright",
+      "isOnline": true,
       "movieGender": "Drama, Romance"
     }
   },
@@ -177,6 +188,7 @@ export default [
       "imDbRating": 8.8,
       "directorsName": "David Fincher",
       "movieStars": "Edward Norton, Brad Pitt",
+      "isOnline": true,
       "movieGender": "Drama"
     }
   },
@@ -192,6 +204,7 @@ export default [
       "imDbRating": 8.7,
       "directorsName": "Peter Jackson",
       "movieStars": "Elijah Wood, Ian McKellen",
+      "isOnline": true,
       "movieGender": "Aventura, Fantasia"
     }
   },
@@ -207,6 +220,7 @@ export default [
       "imDbRating": 8.8,
       "directorsName": "Christopher Nolan",
       "movieStars": "Leonardo DiCaprio, Joseph Gordon-Levitt",
+      "isOnline": true,
       "movieGender": "Aventura, Syfy"
     }
   },
@@ -222,6 +236,7 @@ export default [
       "imDbRating": 8.7,
       "directorsName": "Irvin Kershner",
       "movieStars": "Mark Hamill, Harrison Ford",
+      "isOnline": true,
       "movieGender": "Aventura, Fantasia"
     }
   },
@@ -237,6 +252,7 @@ export default [
       "imDbRating": 8.7,
       "directorsName": "The Wachowskis",
       "movieStars": "Keanu Reeves, Laurence Fishburne",
+      "isOnline": true,
       "movieGender": "Syfy"
     }
   },
@@ -252,6 +268,7 @@ export default [
       "imDbRating": 8.7,
       "directorsName": "Martin Scorsese",
       "movieStars": "Robert De Niro, Joe Pesci",
+      "isOnline": true,
       "movieGender": "Biografia, Policial, Drama"
     }
   },
@@ -267,6 +284,7 @@ export default [
       "imDbRating": 8.7,
       "directorsName": "Milos Forman",
       "movieStars": "Jack Nicholson, Louise Fletcher",
+      "isOnline": true,
       "movieGender": "Drama"
     }
   },
@@ -282,6 +300,7 @@ export default [
       "imDbRating": 8.6,
       "directorsName": "David Fincher",
       "movieStars": "Brad Pitt, Morgan Freeman",
+      "isOnline": false,
       "movieGender": "Crime, Drama"
     }
   },
@@ -297,6 +316,7 @@ export default [
       "imDbRating": 8.6,
       "directorsName": "Frank Capra",
       "movieStars": "James Stewart, Donna Reed",
+      "isOnline": true,
       "movieGender": "Drama, Família, Fantasia"
     }
   },
@@ -312,6 +332,7 @@ export default [
       "imDbRating": 8.6,
       "directorsName": "Akira Kurosawa",
       "movieStars": "Toshiro Mifune, Takashi Shimura",
+      "isOnline": false,
       "movieGender": "Drama"
     }
   },
@@ -327,6 +348,7 @@ export default [
       "imDbRating": 8.6,
       "directorsName": "Christopher Nolan",
       "movieStars": "Matthew McConaughey, Anne Hathaway",
+      "isOnline": true,
       "movieGender": "Aventura, Syfy"
     }
   },
@@ -342,6 +364,7 @@ export default [
       "imDbRating": 8.6,
       "directorsName": "Jonathan Demme",
       "movieStars": "Jodie Foster, Anthony Hopkins",
+      "isOnline": false,
       "movieGender": "Crime, Drama"
     }
   },
@@ -357,6 +380,7 @@ export default [
       "imDbRating": 8.6,
       "directorsName": "Steven Spielberg",
       "movieStars": "Tom Hanks, Matt Damon",
+      "isOnline": true,
       "movieGender": "Drama, Guerra"
     }
   },

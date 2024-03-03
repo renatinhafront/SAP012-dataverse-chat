@@ -198,13 +198,13 @@ h2 {
   margin-top: 30px;
 }
 
-ul {
+/* ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   list-style: none;
   justify-content: space-between;
-}
+} */
 
 li {
   max-width: 229px;
@@ -231,6 +231,7 @@ dl {
   display: flex;
   border: none;
   flex-wrap: wrap;
+  list-style: none;
   justify-content: center;
 }
 
@@ -458,4 +459,77 @@ footer p {
   width: 100%;
   height: 100%;
   border-radius: 5px;
+}
+
+/* CHAT EM GROUP */
+.container__chat__group {
+	margin: 0 auto;
+	display: column-reverse;
+  flex-wrap: wrap;
+	border: 1px solid #ccc;
+  flex-wrap: wrap;
+}
+
+
+.item__chat__group {
+	overflow: auto;
+  width: 500px;
+	margin: 5px;
+	background: rgb(242, 240, 240);
+	text-align: center;
+	font-size: 1.5em;
+  height: 400px;
+}
+
+.titulo-chatGroup {
+  flex: 1;
+	margin: 5px;
+	text-align: center;
+	font-size: 1.5em;
+  height: 400px;
+}
+
+/* GRID USER ONLINE */
+
+.grid__user__online {
+  display: grid;
+  grid-template-columns: 12% 88%;
+  grid-template-areas:
+  "logo_user_online name_user_online"
+  "logo_user_online description_user_online"  ;
+}
+
+.name_user_online{
+ grid-area: name_user_online;
+ padding: 10px 0 0 0;
+}
+
+.logo_user_online {
+  grid-area: logo_user_online;
+}
+
+.image__user__online {
+ height: 50px;
+ width: 50px;
+ border-radius: 30px;
+}
+
+.description_user_online {
+  grid-area: description_user_online;
+  font-size: 20px;
+}
+
+.container__user__online {
+  width: 100%;
+}
+.container__user__online__item {
+  max-width: 100%;
+  margin: 2px;
+  text-align: left;
+}
+
+.font__medium {
+  font-size: medium;
+  color:#040609;
+  font-weight: bold;
 }

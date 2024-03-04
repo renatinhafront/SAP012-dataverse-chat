@@ -3,7 +3,6 @@ import dataMovie from '../data/dataset.js';
 export function ChatGroup() {
 
   const sectionTemplateChatGroup = document.createElement('section');
-  sectionTemplateChatGroup.classList.add('display__chat__group');
   sectionTemplateChatGroup.classList.add('container__chat__group');
 
   const divChatGroup = document.createElement('div');
@@ -11,57 +10,75 @@ export function ChatGroup() {
   sectionTemplateChatGroup.appendChild(divChatGroup);
 
   const divOnlineUsers = document.createElement('div');
-  divOnlineUsers.classList.add('item__chat__group');
+  divOnlineUsers.classList.add('item__chat__user__online');
   divOnlineUsers.appendChild(userOnline());
   sectionTemplateChatGroup.appendChild(divOnlineUsers);
 
-  // const divTituloChatGroup = document.createElement('div');
-  // divTituloChatGroup.classList.add('titulo-chatGroup');
-  // sectionTemplateChatGroup.appendChild(divTituloChatGroup);
-  // divTituloChatGroup.innerHTML = `
-  //     <h1>The Best Movies</h1>
-  //     <dd clas="">Conheça sobre os melhores filmes da história</dd>
-  //   `;
+  const divTituloChatGroup = document.createElement('div');
+  divTituloChatGroup.classList.add('titulo-chatGroup');
+  divTituloChatGroup.appendChild(addTitle());
+  divChatGroup.appendChild(divTituloChatGroup);
 
+  const divListaComentarios = document.createElement('div');
+  divListaComentarios.classList.add('item__lista__chat__group');
+  divChatGroup.appendChild(divListaComentarios);
 
-  // const sectionChatGroup = document.createElement('section');
-  // sectionChatGroup.classList.add('titulo-chatGroup');
-  // divTemplateChatGroup.appendChild(sectionChatGroup);
+  const textareaChatGroup = document.createElement('textarea');
+  textareaChatGroup.classList.add('textarea__chatGroup');
+  textareaChatGroup.placeholder = 'Digite aqui sua pergunta..'
+  divChatGroup.appendChild(textareaChatGroup);
 
-  // const divTituloChatGroup = document.createElement('div');
-  // divTituloChatGroup.classList.add('titulo-chatGroup');
-  // sectionChatGroup.appendChild(divTituloChatGroup);
-  // divTituloChatGroup.innerHTML = `
-  //     <h1>The Best Movies</h1>
-  //     <dd clas="">Conheça sobre os melhores filmes da história</dd>
-  // `;
+  // Ações a serem executadas quando o Enter for pressionado
+  textareaChatGroup.addEventListener('keydown', function(event) {
 
-  // // const item = dataMovie.find(item);
-  // dataMovie.forEach(movie => {
-  //   sectionChatGroup.appendChild(userOnline(movie));
-  //   sectionChatGroup.appendChild(addComentario(movie));
+    if (event.key === 'Enter' && !event.shiftKey) {
+      textareaChatGroup.value = ''
+      event.preventDefault();
+    }
+  });
 
   return sectionTemplateChatGroup;
 }
 
-export const addComentario = (item) => {
+export const addTitle = () => {
+
+  const divTituloChatGroup = document.createElement('div');
+  divTituloChatGroup.classList.add('container__title');
+  divTituloChatGroup.innerHTML = `
+    <section class="grid__user__online">
+        <div class="item_user_online logo_user_online">
+          <img src="../img/favicon.png" class="item__img__titulo__group" alt="ícone de identificação da página"</img>
+        </div>
+
+        <div class="item_user_online name_user_online">
+        <h3 class="title__group">The Best Movies</h3>
+        </div>
+
+        <div class="item_user_online description_user_online">
+          <p class="sub__title__group">Conheça sobre os melhores filmes da história</p>
+        </div>
+      </section>
+
+`;
+  return divTituloChatGroup;
+}
+
+export const addComentarioMovies = (item) => {
 
 
   const divTemplateComentario = document.createElement('div');
 
   const sectionTempleteComentario = document.createElement('section');
   sectionTempleteComentario.classList.add('comentario');
-  divTemplateComentario.appendChild(sectionTempleteComentario);
   divTemplateComentario.innerHTML = `
+
       <img src="${item.imageUrl}" alt="Imagem do Filme" itemprop="${item.name}" class="image__card"/>
       <dd itemprop="name" class="name__card">${item.name}</dd>
       <textarea class="txtarea__chatGroup" readOnly=true cols="60" rows="8" style="resize:none"></textarea>
-      <input class="inp__chatGroup" type="text" placeholder="Digite aqui sua pergunta.."></input>
   `;
 
   return divTemplateComentario;
 }
-
 
 export const userOnline = () => {
   const ul = document.createElement('ul');
@@ -82,7 +99,7 @@ export const userOnline = () => {
         </div>
 
         <div class="item_user_online description_user_online">
-        <p class="description">${item.shortDescription}</p>
+        <p class="description__user__online">${item.shortDescription}</p>
         </div>
       </section>
       <hr/>
@@ -93,8 +110,6 @@ export const userOnline = () => {
 
   return ul;
 };
-
-
 
 
 export default ChatGroup;

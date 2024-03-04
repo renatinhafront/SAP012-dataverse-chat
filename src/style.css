@@ -156,6 +156,24 @@ h2 {
   margin-top: 30px;
 }
 
+h3 {
+  position: relative;
+  color: #2d2d37;
+  font-size: 26px;
+  padding-left: 15px;
+  text-align: center;
+}
+
+h3::before {
+  content: "";
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    border-radius: 8px;
+    background-color: #e11d48;
+    left: 170px;
+}
+
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -336,4 +354,67 @@ footer p {
 .socialIcons a {
   color: #fff;
   margin-right: 10px;
+}
+
+/* CHAT */
+
+.container-chat {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.column {
+  flex: 1;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+}
+
+.image__movie {
+  float: left;
+  margin: 20px 20px 20px 0px;
+  width: 230px;
+}
+
+section.container-details {
+  max-width: 550px;
+  min-width: 490px;
+  margin-right: 20px;
+}
+
+.description-movie {
+  display: flex;
+}
+
+.details-movie {
+  padding: 104px 0 104px;
+    height: 386px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+p.description {
+  color: #6a738d;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+textarea.txtarea__chat {
+  border-radius: 10px;
+  background-color: #DDDDDD;
+  border: none;
+  margin-top: 10px;
+}
+
+input.inp__chat {
+border-radius: 10px;
+    height: 50px;
+    width: 100%;
+    border: none;
+    background-color: #F0F0F0;
+    padding: 10px;
 }

@@ -1,31 +1,42 @@
 import dataMovie from '../data/dataset.js';
-import { sortData, totalMovies, filterData } from "../lib/dataFunctions.js";
+import { sortData, filterData, totalMovies } from "../lib/dataFunctions.js";
+import { navigateTo } from '../router.js';
 
 export function Home() {
+  let currentData = dataMovie;
   const viewEl = document.createElement('div');
-  viewEl.appendChild(renderSubTitle());
+
+  const { subTitle, titlesLength } = renderSubTitle();
+  viewEl.appendChild(subTitle);
+
   const { filter, order, filters, btnLimpar } = renderFilter();
   viewEl.appendChild(filter);
+
+  const { items } = renderItems(currentData);
+
   const itemsContainer = document.createElement('div');
   itemsContainer.id = "items-container";
   viewEl.appendChild(itemsContainer);
-  let currentData = dataMovie;
-  itemsContainer.appendChild(renderItems(currentData));
+  itemsContainer.appendChild(items);
 
-  order.addEventListener("change", (e) => {
-    const orderValue = e.target.value;
+  titlesLength.innerText = totalMovies(currentData);
+
+  order.addEventListener("change", (element) => {
+    const orderValue = element.target.value;
     currentData = sortData(currentData, "imDbRating", orderValue);
     renderItemsInView(currentData);
+    titlesLength.innerText = totalMovies(currentData)
   });
 
-  filters.addEventListener("change", (e) => {
-    const value = e.target.value;
+  filters.addEventListener("change", (element) => {
+    const value = element.target.value;
     if (value === "Todos") {
       currentData = dataMovie;
     } else {
       currentData = filterData(dataMovie, "movieGender", value);
     }
     renderItemsInView(currentData);
+    titlesLength.innerText = totalMovies(currentData)
   });
 
   btnLimpar.addEventListener("click", () => {
@@ -33,16 +44,17 @@ export function Home() {
     filters.value = "Todos";
     order.value = "todos";
     renderItemsInView(currentData);
+    titlesLength.innerText = totalMovies(currentData)
   });
 
   function renderItemsInView(data) {
     itemsContainer.innerHTML = "";
-    itemsContainer.appendChild(renderItems(data));
+    const { items } = renderItems(data);
+    itemsContainer.appendChild(items);
   }
 
   return viewEl;
 }
-
 export default Home;
 
 export const renderItems = (dataMovie) => {
@@ -53,7 +65,7 @@ export const renderItems = (dataMovie) => {
     const li = document.createElement('li');
     li.setAttribute('itemscope', '');
     li.setAttribute('itemtype', 'OsMelhoresFilmes');
-    li.classList.add('container__card');
+    li.classList.add('container__card__item');
 
     li.innerHTML = `
       <div class="content__card">
@@ -74,9 +86,12 @@ export const renderItems = (dataMovie) => {
       </div>
     `;
     ul.appendChild(li);
+    li.addEventListener("click", () => navigateTo("/chat", {id: item.id}))
   });
 
-  return ul;
+  const btnVerMais = ul.querySelector(".btn-verMais");
+
+  return { items: ul, btnVerMais };
 };
 
 export const renderFilter = () => {
@@ -126,12 +141,14 @@ export const renderSubTitle = () => {
       <p>Os melhores filmes para você assistir.</p>
       <span class="titles_length"> títulos</span>
       `;
-  return divSubTitle;
+
+  const titlesLength = divSubTitle.querySelector(".titles_length");
+
+  return { subTitle: divSubTitle, titlesLength };
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   const homeView = Home();
   const root = document.getElementById("root");
   root.appendChild(homeView);
-  totalMovies(dataMovie);
 });

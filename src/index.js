@@ -1,8 +1,9 @@
 import { Home } from "./views/Home.js";
-import Chat from "./components/Chat.js";
-import ChatGroup from "./components/ChatGroup.js";
+import Chat from "./views/Chat.js";
+import ChatGroup from "./views/ChatGroup.js";
 import ErrorView from "./views/Error.js";
-import { setRootEl, setRoutes, onURLChange } from "./router.js"
+import { setRootEl, setRoutes, onURLChange } from "./router.js";
+import { setApiKey } from '../lib/apiKey.js';
 
 const routes = {
   "/": Home,
@@ -13,6 +14,10 @@ const routes = {
 
 const root = document.getElementById("root");
 const imgBanner = document.querySelector(".header-image");
+const btnKeyApi = document.querySelector(".btnKey");
+const btnSubmitKey = document.querySelector('.btnSubmitKey');
+const valueKey = document.querySelector('#valueKey');
+const dialogKey = document.querySelector('.dialogKey');
 
 window.addEventListener('popstate', () => {
   onURLChange(window.location);
@@ -23,10 +28,22 @@ window.addEventListener("DOMContentLoaded", () => {
   onURLChange(window.location);
 });
 
+btnKeyApi.addEventListener("click", () => {
+  dialogKey.showModal();
+});
+
+btnSubmitKey.addEventListener("click", () => {
+  setApiKey(valueKey)
+  dialogKey.close();
+});
+
 function alterarBanner() {
   const larguraJanela = window.innerWidth;
-  if (larguraJanela < 550) {
+  if (larguraJanela < 580) {
     imgBanner.src = 'img/banner-mobile.png';
+  }
+  else {
+    imgBanner.src = 'img/banner.png';
   }
 }
 

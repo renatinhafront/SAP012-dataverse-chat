@@ -19,7 +19,7 @@ const btnSubmitKey = document.querySelector('.btnSubmitKey');
 const valueKey = document.querySelector('#valueKey');
 const dialogKey = document.querySelector('.dialogKey');
 const btnChatGroup = document.querySelector('.btnChatGrup')
-const btnHome = document.querySelector('.btnHome')
+const btnHeaderImage = document.querySelector('.header-image')
 
 window.addEventListener('popstate', () => {
   onURLChange(window.location);
@@ -43,7 +43,7 @@ btnChatGroup.addEventListener("click", () => {
   window.location.href = "/chatGroup";
 });
 
-btnHome.addEventListener("click", () => {
+btnHeaderImage.addEventListener("click", () => {
   navigateTo("/")
 })
 
@@ -51,6 +51,8 @@ function alterarBanner() {
   const larguraJanela = window.innerWidth;
   if (larguraJanela < 550) {
     imgBanner.src = 'img/banner-mobile.png';
+  } else {
+    imgBanner.src = 'img/banner.png';
   }
 }
 

@@ -47,6 +47,7 @@ header {
 .header-image {
   width: 100%;
   height: auto;
+  cursor: pointer;
 }
 
 .div__error {
@@ -75,6 +76,7 @@ header {
   margin-top: -100px;
   margin-left: -150px;
   line-height: 2em;
+  overflow: hidden;
 }
 
 .btnSubmitKey {
@@ -150,9 +152,6 @@ select#order {
   border-radius: 5px;
 }
 
-/* .section-search .section-filters select:focus {
-  outline: none;
-} */
 .section-search .section-filters select::-ms-expand,
 .section-search,
 .section-filters select::-ms-expand {
@@ -241,6 +240,7 @@ dl {
 .image__card {
   width: 230px;
   height: 340px;
+  cursor: pointer;
 }
 
 label {
@@ -403,7 +403,11 @@ footer p {
 section.container-details {
   max-width: 550px;
   min-width: 490px;
-  margin-right: 20px;
+  margin: 15px;
+}
+
+section.chat {
+  margin-top: 15px;
 }
 
 .description-movie {
@@ -425,13 +429,18 @@ section.container-details {
   margin-bottom: 30px;
 }
 
+p.description__chat__individual {
+  text-align: justify;
+}
+
 .textarea-chat {
-  width: 700px;
+  width: 550px;
   height: 300px;
   border-radius: 10px;
   background-color: #DDDDDD;
   border: none;
   margin-top: 10px;
+  font-family: "Lato";
 
 }
 
@@ -442,6 +451,11 @@ section.container-details {
   border: none;
   background-color: #F0F0F0;
   padding: 10px;
+  font-family: "Lato";
+}
+
+ul.lista__chat {
+  list-style: none;
 }
 
 /* CHAT EM GROUP */
@@ -482,6 +496,7 @@ section.container-details {
   height: 280px;
   width: 99%;
   overflow: auto;
+  font-family: "Lato-Bold", Helvetica;
 }
 
 .item__img__titulo__group {
@@ -507,13 +522,14 @@ section.container-details {
   border: 0px;
   padding: 5px;
   resize: none;
+  font-family: "Lato-Bold", Helvetica;
 }
 
 /* GRID USER ONLINE */
 
 .grid__user__online {
   display: grid;
-  grid-template-columns: 6% 94%;
+  grid-template-columns: 60px 56%;
   grid-template-areas:
     "logo_user_online name_user_online"
     "logo_user_online description_user_online";

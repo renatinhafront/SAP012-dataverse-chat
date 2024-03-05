@@ -1,6 +1,5 @@
-// import dataMovie from '../data/dataset.js';
 // // import { navigateTo } from '../router';
-
+import { communicateWithOpenAI } from '../lib/openAIApi.js';
 import dataMovie from '../data/dataset.js';
 
 export function Chat(props) {
@@ -19,16 +18,44 @@ export function Chat(props) {
       <section class="chat">
         <h3>Iniciar Conversa</h3>
         <div class="textarea-chat">
-          <textarea class="txtarea__chat" readOnly=true cols="75" rows="25" style="resize:none"></textarea>
+          <ul class="lista__chat"></ul>
         </div>
         <div class="input-chat">
-          <input class="inp__chat" type="text" placeholder="Escreva aqui sua pergunta.."></input>
+          <textarea class="inp__chat" placeholder="Escreva aqui sua pergunta.."></textarea>
         </div>
       </section>
     </section>
   `;
 
+  const listaChat = divTemplateChat.querySelector('.lista__chat');
+  const textareaChatInp = divTemplateChat.querySelector('.inp__chat');
+
+  textareaChatInp.addEventListener('keydown', function (event) {
+
+    if (event.key === 'Enter' && !event.shiftKey) {
+      listaChat.appendChild(createComentario(textareaChatInp.value))
+      communicateWithOpenAI(textareaChatInp.value)
+        .then(resultado => {
+          listaChat.appendChild(createComentario(resultado))
+        })
+        .catch(error => {
+          console.error('Erro:', error);
+        });
+
+      textareaChatInp.value = ''
+      event.preventDefault();
+    }
+  });
+
   return divTemplateChat;
+}
+
+const createComentario = (texto) => {
+  const li = document.createElement('li');
+  const p = document.createElement('p');
+  p.innerText = texto;
+  li.appendChild(p);
+  return li;
 }
 
 export const renderDetails = (item) => {

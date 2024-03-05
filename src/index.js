@@ -2,7 +2,7 @@ import { Home } from "./views/Home.js";
 import Chat from "./views/Chat.js";
 import ChatGroup from "./views/ChatGroup.js";
 import ErrorView from "./views/Error.js";
-import { setRootEl, setRoutes, onURLChange } from "./router.js"
+import { setRootEl, setRoutes, onURLChange, navigateTo } from "./router.js"
 import { setApiKey } from '../lib/apiKey.js';
 
 const routes = {
@@ -18,6 +18,8 @@ const btnKeyApi = document.querySelector(".btnKey");
 const btnSubmitKey = document.querySelector('.btnSubmitKey');
 const valueKey = document.querySelector('#valueKey');
 const dialogKey = document.querySelector('.dialogKey');
+const btnChatGroup = document.querySelector('.btnChatGrup')
+const btnHome = document.querySelector('.btnHome')
 
 window.addEventListener('popstate', () => {
   onURLChange(window.location);
@@ -36,6 +38,14 @@ btnSubmitKey.addEventListener("click", () => {
   setApiKey(valueKey)
   dialogKey.close();
 });
+
+btnChatGroup.addEventListener("click", () => {
+  window.location.href = "/chatGroup";
+});
+
+btnHome.addEventListener("click", () => {
+  navigateTo("/")
+})
 
 function alterarBanner() {
   const larguraJanela = window.innerWidth;

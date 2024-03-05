@@ -18,6 +18,7 @@ const btnKeyApi = document.querySelector(".btnKey");
 const btnSubmitKey = document.querySelector('.btnSubmitKey');
 const valueKey = document.querySelector('#valueKey');
 const dialogKey = document.querySelector('.dialogKey');
+const feedbackMessage = document.getElementById('feedbackMessage');
 
 window.addEventListener('popstate', () => {
   onURLChange(window.location);
@@ -33,9 +34,21 @@ btnKeyApi.addEventListener("click", () => {
 });
 
 btnSubmitKey.addEventListener("click", () => {
-  setApiKey(valueKey)
-  dialogKey.close();
+  const apiKey = valueKey.value.trim(); 
+
+  if (apiKey) {
+    setApiKey(apiKey); 
+    showFeedbackMessage('Chave da API gravada com sucesso!', 'success');
+    dialogKey.close();
+  } else {
+    showFeedbackMessage('Por favor, insira uma chave da API válida.', 'error');
+  }
 });
+
+function showFeedbackMessage(message, type) {
+  feedbackMessage.textContent = message;
+  feedbackMessage.className = type;
+}
 
 function alterarBanner() {
   const larguraJanela = window.innerWidth;

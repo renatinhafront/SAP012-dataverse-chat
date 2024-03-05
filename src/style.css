@@ -152,9 +152,6 @@ select#order {
   border-radius: 5px;
 }
 
-/* .section-search .section-filters select:focus {
-  outline: none;
-} */
 .section-search .section-filters select::-ms-expand,
 .section-search,
 .section-filters select::-ms-expand {

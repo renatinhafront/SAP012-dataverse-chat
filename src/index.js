@@ -47,22 +47,6 @@ btnHome.addEventListener("click", () => {
   navigateTo("/")
 })
 
-//Listerner
-// link.addEventListener('click', () => {
-//   let pathname = "/"
-//   if (window.location.pathname === "/") {
-//     pathname = "/chat"
-//   }else if (window.location.pathname === "/chat") {
-//     pathname = "/chatGroup"
-//   }else {
-//     pathname = "/"
-//   }
-//   // alert("Alerta")
-//   navigateTo(pathname)
-// });
-
-
-
 function alterarBanner() {
   const larguraJanela = window.innerWidth;
   if (larguraJanela < 550) {

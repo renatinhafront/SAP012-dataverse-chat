@@ -1,4 +1,5 @@
 import dataMovie from '../data/dataset.js';
+import { communicateWithOpenAI } from '../lib/openAIApi.js';
 
 export function ChatGroup() {
 
@@ -20,8 +21,11 @@ export function ChatGroup() {
   divChatGroup.appendChild(divTituloChatGroup);
 
   const divListaComentarios = document.createElement('div');
+  const ulComentariosGroup = document.createElement('ul');
   divListaComentarios.classList.add('item__lista__chat__group');
+  ulComentariosGroup.classList.add('item__ul__chat__group');
   divChatGroup.appendChild(divListaComentarios);
+  divListaComentarios.appendChild(ulComentariosGroup);
 
   const textareaChatGroup = document.createElement('textarea');
   textareaChatGroup.classList.add('textarea__chatGroup');
@@ -29,9 +33,20 @@ export function ChatGroup() {
   divChatGroup.appendChild(textareaChatGroup);
 
   // Ações a serem executadas quando o Enter for pressionado
+
+
   textareaChatGroup.addEventListener('keydown', function(event) {
 
     if (event.key === 'Enter' && !event.shiftKey) {
+      ulComentariosGroup.appendChild(createComentarioGroup(textareaChatGroup.value))
+      communicateWithOpenAI(textareaChatGroup.value)
+        .then(resultado => {
+          ulComentariosGroup.appendChild(createComentarioGroup(resultado))
+        })
+        .catch(error => {
+          console.error('Erro:', error);
+        });
+
       textareaChatGroup.value = ''
       event.preventDefault();
     }
@@ -61,6 +76,14 @@ export const addTitle = () => {
 
 `;
   return divTituloChatGroup;
+}
+
+const createComentarioGroup = (texto) => {
+  const li = document.createElement('li');
+  const h5 = document.createElement('h5');
+  h5.innerHTML = texto;
+  li.appendChild(h5);
+  return li;
 }
 
 export const addComentarioMovies = (item) => {

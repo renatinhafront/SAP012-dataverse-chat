@@ -239,8 +239,8 @@ dl {
 }
 
 .image__card {
-  width: 100%;
-  height: 100%;
+  width: 230px;
+  height: 340px;
 }
 
 label {
@@ -381,109 +381,109 @@ footer p {
 /* CHAT */
 
 .container-chat {
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .column {
-flex: 1;
-padding: 20px;
-background-color: #f0f0f0;
-border: 1px solid #ccc;
+  flex: 1;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
 }
 
 .image__movie {
-float: left;
-margin: 20px 20px 20px 0px;
-width: 230px;
+  float: left;
+  margin: 20px 20px 20px 0px;
+  width: 230px;
 }
 
 section.container-details {
-max-width: 550px;
-min-width: 490px;
-margin-right: 20px;
+  max-width: 550px;
+  min-width: 490px;
+  margin-right: 20px;
 }
 
 .description-movie {
-display: flex;
+  display: flex;
 }
 
 .details-movie {
-padding: 104px 0 104px;
-height: 386px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
+  padding: 104px 0 104px;
+  height: 386px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .description__chat__individual {
-color: #6a738d;
-font-size: 16px;
-font-weight: 400;
-margin-bottom: 30px;
+  color: #6a738d;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 30px;
 }
 
-textarea.txtarea__chat {
-border-radius: 10px;
-background-color: #DDDDDD;
-border: none;
-margin-top: 10px;
+.textarea-chat {
+  width: 700px;
+  height: 300px;
+  border-radius: 10px;
+  background-color: #DDDDDD;
+  border: none;
+  margin-top: 10px;
+
 }
 
-input.inp__chat {
-border-radius: 10px;
-height: 50px;
-width: 100%;
-border: none;
-background-color: #F0F0F0;
-padding: 10px;
+.inp__chat {
+  border-radius: 10px;
+  height: 50px;
+  width: 100%;
+  border: none;
+  background-color: #F0F0F0;
+  padding: 10px;
 }
 
 /* CHAT EM GROUP */
 .container__chat__group {
-	margin: 0 auto;
-	display: flex;
+  margin: 0 auto;
+  display: flex;
   flex-wrap: wrap;
-	border: 1px solid #ccc;
-  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .item__chat__group {
-  width: 500px;
-	margin: 5px;
-	background: rgb(242, 240, 240);
-	text-align: center;
-	font-size: 1.5em;
+  width: 100%;
+  margin: 5px;
+  text-align: center;
+  font-size: 1.5em;
   height: 400px;
 }
 
 .item__chat__user__online {
-	overflow: auto;
-  width: 500px;
-	margin: 5px;
-	background: rgb(242, 240, 240);
-	text-align: center;
-	font-size: 1.5em;
-  height: 400px;
+  overflow: auto;
+  width: 100%;
+  margin: 5px;
+  text-align: left;
+  font-size: 1.5em;
+  height: 300px;
 }
 
 .titulo-chatGroup {
   flex: 1;
   color: #2d2d37;
-	margin: 4px;
+  margin: 4px;
   font-weight: 200;
   padding-left: 5px;
   text-align: left;
 }
 
 .item__lista__chat__group {
-  height: 300px;
-  width: 100%;
-  border: #e11d48 2px solid;
+  height: 280px;
+  width: 99%;
   overflow: auto;
 }
+
 .item__img__titulo__group {
   height: 50px;
   width: 50px;
@@ -494,33 +494,34 @@ padding: 10px;
   font-size: 21px;
   padding: 0;
 }
+
 .sub__title__group {
   font-size: small;
 }
 
 .textarea__chatGroup {
-  width: 500px;
-  height: 40px;
+  width: 99%;
+  height: 60px;
   border-radius: 5px;
-  background: #e0dddd;
+  background: rgb(242, 240, 240);
   border: 0px;
   padding: 5px;
-  resize:none;
+  resize: none;
 }
 
 /* GRID USER ONLINE */
 
 .grid__user__online {
   display: grid;
-  grid-template-columns: 12% 88%;
+  grid-template-columns: 6% 94%;
   grid-template-areas:
-  "logo_user_online name_user_online"
-  "logo_user_online description_user_online"  ;
+    "logo_user_online name_user_online"
+    "logo_user_online description_user_online";
 }
 
-.name_user_online{
- grid-area: name_user_online;
- padding: 10px 0 0 0;
+.name_user_online {
+  grid-area: name_user_online;
+  padding: 10px 0 0 0;
 }
 
 .logo_user_online {
@@ -528,9 +529,9 @@ padding: 10px;
 }
 
 .image__user__online {
- height: 50px;
- width: 50px;
- border-radius: 30px;
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
 }
 
 .description_user_online {
@@ -541,9 +542,11 @@ padding: 10px;
 .description__user__online {
   font-size: 13px;
 }
+
 .container__user__online {
   width: 100%;
 }
+
 .container__user__online__item {
   max-width: 100%;
   margin: 2px;
@@ -552,12 +555,12 @@ padding: 10px;
 
 .font__medium {
   font-size: medium;
-  color:#040609;
+  color: #040609;
   font-weight: bold;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .container__chat__group {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 }

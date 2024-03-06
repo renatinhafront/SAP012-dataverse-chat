@@ -35,7 +35,7 @@ btnKeyApi.addEventListener("click", () => {
 });
 
 btnSubmitKey.addEventListener("click", () => {
-  setApiKey(valueKey)
+  setApiKey(valueKey.value)
   dialogKey.close();
 });
 

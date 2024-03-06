@@ -10,25 +10,25 @@ export const setRoutes = (routes) => {
   ROUTES = routes
 };
 
-const queryStringToObject = (props) => {
-  const urlParams = new URLSearchParams (props);
-  return Object.fromEntries(urlParams)
-};
+// const queryStringToObject = (props) => {
+//   const urlParams = new URLSearchParams (props);
+//   return Object.fromEntries(urlParams)
+// };
 
-export const renderView = (pathname, props = {name: " ", id: " "}) => {
+export const renderView = (pathname, props = {id: ""}) => {
   rootEl.textContent = ""
   let routeFunc = ROUTES[pathname]
   if (!routeFunc) {
     routeFunc = ROUTES["/error"]
   }
 
-  const params = queryStringToObject(props)
-  const element = routeFunc(params);
+  // const params = queryStringToObject(props)
+  const element = routeFunc(props);
   rootEl.appendChild(element);
 };
 
-export const navigateTo = (pathname = "/", props = { name: " ", id: " "}) => {
-  window.history.pushState(null, null, pathname);
+export const navigateTo = (pathname = "/", props = {id: ""}) => {
+  window.history.pushState(null, null, `${pathname}?id=${props.id}`);
   renderView(pathname, props);
 };
 

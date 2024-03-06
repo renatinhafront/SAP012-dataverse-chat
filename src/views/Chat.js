@@ -1,9 +1,11 @@
-// // import { navigateTo } from '../router';
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
 import dataMovie from '../data/dataset.js';
 
 export function Chat(props) {
-  const item = dataMovie.find((movie) => movie.id === props.id);
+  const urlParams = new URLSearchParams(window.location.search);
+  const myParam = urlParams.get('id');
+
+  const item = dataMovie.find((movie) => movie.id === props.id || myParam);
 
   const divTemplateChat = document.createElement('div');
   divTemplateChat.innerHTML = `

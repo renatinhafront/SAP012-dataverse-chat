@@ -1,9 +1,10 @@
-//import { getApiKey } from "./apiKey";
+import { getApiKey } from "./apiKey.js";
 
 const url = 'https://api.openai.com/v1/chat/completions';
 
 export const communicateWithOpenAI = (texto) => {
-  const apiKey = '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';//getApiKey();
+  const apiKey = getApiKey();
+  // getApiKey();
 
   const requestOptions = {
     method: 'POST',
@@ -18,7 +19,7 @@ export const communicateWithOpenAI = (texto) => {
           content: texto
         }
       ],
-      model: 'gpt-3.5',
+      model: 'gpt-4',
     })
   };
 

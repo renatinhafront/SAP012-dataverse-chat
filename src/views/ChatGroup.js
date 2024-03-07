@@ -29,12 +29,10 @@ export function ChatGroup() {
 
   const textareaChatGroup = document.createElement('textarea');
   textareaChatGroup.classList.add('textarea__chatGroup');
-  textareaChatGroup.placeholder = 'Digite aqui sua pergunta..'
+  textareaChatGroup.placeholder = 'Escreva aqui sua pergunta..'
   divChatGroup.appendChild(textareaChatGroup);
 
   // Ações a serem executadas quando o Enter for pressionado
-
-
   textareaChatGroup.addEventListener('keydown', function(event) {
 
     if (event.key === 'Enter' && !event.shiftKey) {

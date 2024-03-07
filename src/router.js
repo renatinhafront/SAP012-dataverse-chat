@@ -10,11 +10,6 @@ export const setRoutes = (routes) => {
   ROUTES = routes
 };
 
-// const queryStringToObject = (props) => {
-//   const urlParams = new URLSearchParams (props);
-//   return Object.fromEntries(urlParams)
-// };
-
 export const renderView = (pathname, props = {id: ""}) => {
   rootEl.textContent = ""
   let routeFunc = ROUTES[pathname]
@@ -22,7 +17,6 @@ export const renderView = (pathname, props = {id: ""}) => {
     routeFunc = ROUTES["/error"]
   }
 
-  // const params = queryStringToObject(props)
   const element = routeFunc(props);
   rootEl.appendChild(element);
 };

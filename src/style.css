@@ -407,6 +407,7 @@ section.container-details {
 }
 
 section.chat {
+  width: 600px;
   margin-top: 15px;
 }
 
@@ -493,11 +494,47 @@ ul.lista__chat {
   text-align: left;
 }
 
-.item__lista__chat__group {
+.item__lista__chat__group,
+.item__lista__chat {
   height: 280px;
-  width: 99%;
+  width: 100%;
   overflow: auto;
   font-family: "Lato-Bold", Helvetica;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: #ccc 2px solid;
+  border-radius: 5px;
+}
+
+.box-my-question{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.box-response{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.my-question,
+.response-message{
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+  margin: 0;
+  font-size: 13px;
+}
+
+.my-question{
+  text-align: right;
+  background-color: #949494;
+}
+
+.response-message{
+  text-align: left;
+  background-color: #cccccc;
 }
 
 .item__img__titulo__group {

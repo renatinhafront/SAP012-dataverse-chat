@@ -4,11 +4,11 @@ const url = 'https://api.openai.com/v1/chat/completions';
 
 export const communicateWithOpenAI = (texto) => {
   const apiKey = getApiKey();
-  // getApiKey();
 
   const requestOptions = {
     method: 'POST',
     headers: {
+      'Accept': "application/json",
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${apiKey}`
     },
@@ -20,6 +20,8 @@ export const communicateWithOpenAI = (texto) => {
         }
       ],
       model: 'gpt-4',
+      max_tokens: 2048,
+      temperature: 0.5
     })
   };
 
@@ -28,6 +30,7 @@ export const communicateWithOpenAI = (texto) => {
       .then(response => {
         if (!response.ok) {
           throw new Error('Erro ao chamar a API do OpenAI');
+
         }
         return response.json();
       })

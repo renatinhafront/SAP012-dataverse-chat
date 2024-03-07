@@ -1,5 +1,7 @@
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
 import dataMovie from '../data/dataset.js';
+import { createQuestion, createResponse } from './Commons.js';
+import { getApiKey } from '../lib/apiKey.js';
 
 export function Chat(props) {
   const urlParams = new URLSearchParams(window.location.search);
@@ -19,8 +21,8 @@ export function Chat(props) {
       </section>
       <section class="chat">
         <h3>Iniciar Conversa</h3>
-        <div class="textarea-chat">
-          <ul class="lista__chat"></ul>
+        <div class="item__lista__chat">
+          <p class="status__chat"></p>
         </div>
         <div class="input-chat">
           <textarea class="inp__chat" placeholder="Escreva aqui sua pergunta.."></textarea>
@@ -28,39 +30,50 @@ export function Chat(props) {
       </section>
     </section>
   `;
+  const divListaComentarios = divTemplateChat.querySelector('.item__lista__chat');
+  const statusChatGpt = divTemplateChat.querySelector('.status__chat');
 
-  const listaChat = divTemplateChat.querySelector('.lista__chat');
-  const textareaChatInp = divTemplateChat.querySelector('.inp__chat');
+  const textareaChat = divTemplateChat.querySelector('.inp__chat');
 
-  textareaChatInp.addEventListener('keydown', function (event) {
+  textareaChat.addEventListener('keydown', function (event) {
 
     if (event.key === 'Enter' && !event.shiftKey) {
-      listaChat.appendChild(createComentario(textareaChatInp.value))
-      communicateWithOpenAI(textareaChatInp.value)
-        .then(resultado => {
-          listaChat.appendChild(createComentario(resultado))
+      if (!getApiKey()) {
+        statusChatGpt.innerHTML = 'Erro, KEY não configurada'
+        textareaChat.value = ''
+        event.preventDefault();
+        return
+      }
+      statusChatGpt.style.display = 'block'
+      statusChatGpt.innerHTML = 'Carregando...'
+      textareaChat.disabled = true
+
+      divListaComentarios.appendChild(createQuestion(textareaChat.value))
+      textareaChat.value = ''
+
+      communicateWithOpenAI(`${textareaChat.value} ${item.name}`)
+        .then(response => {
+          statusChatGpt.style.display = 'none'
+          divListaComentarios.appendChild(createResponse(response))
+          // Levar scroll para o final
+          divListaComentarios.scrollTop = divListaComentarios.scrollHeight
         })
         .catch(error => {
+          statusChatGpt.innerHTML = 'Erro, tente novamente mais tarde...'
           console.error('Erro:', error);
-        });
-
-      textareaChatInp.value = ''
-      event.preventDefault();
+        })
+        .finally(() => {
+          textareaChat.disabled = false
+          event.preventDefault();
+        })
     }
+
   });
 
   return divTemplateChat;
 }
 
-const createComentario = (texto) => {
-  const li = document.createElement('li');
-  const p = document.createElement('p');
-  p.innerText = texto;
-  li.appendChild(p);
-  return li;
-}
-
-export const renderDetails = (item) => {
+const renderDetails = (item) => {
 
   const divDetalhesChat = document.createElement('div');
   divDetalhesChat.classList.add('details-movie');
@@ -77,5 +90,3 @@ export const renderDetails = (item) => {
 }
 
 export default Chat;
-
-

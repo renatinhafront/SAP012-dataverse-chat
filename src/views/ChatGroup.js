@@ -1,5 +1,7 @@
 import dataMovie from '../data/dataset.js';
+import { getApiKey } from '../lib/apiKey.js';
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
+import { createQuestion, createResponse } from './Commons.js';
 
 export function ChatGroup() {
 
@@ -12,7 +14,7 @@ export function ChatGroup() {
 
   const divOnlineUsers = document.createElement('div');
   divOnlineUsers.classList.add('item__chat__user__online');
-  divOnlineUsers.appendChild(userOnline());
+  divOnlineUsers.appendChild(createListaMovieOnline());
   sectionTemplateChatGroup.appendChild(divOnlineUsers);
 
   const divTituloChatGroup = document.createElement('div');
@@ -21,11 +23,10 @@ export function ChatGroup() {
   divChatGroup.appendChild(divTituloChatGroup);
 
   const divListaComentarios = document.createElement('div');
-  const ulComentariosGroup = document.createElement('ul');
+  const statusChatGpt = document.createElement('p');
   divListaComentarios.classList.add('item__lista__chat__group');
-  ulComentariosGroup.classList.add('item__ul__chat__group');
   divChatGroup.appendChild(divListaComentarios);
-  divListaComentarios.appendChild(ulComentariosGroup);
+  divListaComentarios.appendChild(statusChatGpt);
 
   const textareaChatGroup = document.createElement('textarea');
   textareaChatGroup.classList.add('textarea__chatGroup');
@@ -33,27 +34,51 @@ export function ChatGroup() {
   divChatGroup.appendChild(textareaChatGroup);
 
   // Ações a serem executadas quando o Enter for pressionado
-  textareaChatGroup.addEventListener('keydown', function(event) {
+  textareaChatGroup.addEventListener('keydown', function (event) {
 
     if (event.key === 'Enter' && !event.shiftKey) {
-      ulComentariosGroup.appendChild(createComentarioGroup(textareaChatGroup.value))
-      communicateWithOpenAI(textareaChatGroup.value)
-        .then(resultado => {
-          ulComentariosGroup.appendChild(createComentarioGroup(resultado))
-        })
-        .catch(error => {
-          console.error('Erro:', error);
-        });
+      if (!getApiKey()) {
+        statusChatGpt.innerHTML = 'Erro, KEY não configurada'
+        textareaChatGroup.value = ''
+        event.preventDefault();
+        return
+      }
 
+      statusChatGpt.style.display = 'block'
+      statusChatGpt.innerHTML = 'Carregando...'
+      textareaChatGroup.disabled = true
+
+      divListaComentarios.appendChild(createQuestion(textareaChatGroup.value))
+      const question = textareaChatGroup.value
       textareaChatGroup.value = ''
-      event.preventDefault();
+
+      dataMovie.forEach((item) => {
+        if (item.facts.isOnline) {
+          communicateWithOpenAI(`${question} ${item.name}`)
+            .then(response => {
+              statusChatGpt.style.display = 'none'
+              divListaComentarios.appendChild(createResponse(response))
+              // Levar scroll para o final
+              divListaComentarios.scrollTop = divListaComentarios.scrollHeight
+            })
+            .catch(error => {
+              statusChatGpt.innerHTML = 'Erro, tente novamente mais tarde...'
+              console.error('Erro:', error);
+            })
+            .finally(() => {
+              textareaChatGroup.disabled = false
+              event.preventDefault();
+            })
+
+        }
+      });
     }
   });
 
   return sectionTemplateChatGroup;
 }
 
-export const addTitle = () => {
+const addTitle = () => {
 
   const divTituloChatGroup = document.createElement('div');
   divTituloChatGroup.classList.add('container__title');
@@ -76,32 +101,7 @@ export const addTitle = () => {
   return divTituloChatGroup;
 }
 
-const createComentarioGroup = (texto) => {
-  const li = document.createElement('li');
-  const h5 = document.createElement('h5');
-  h5.innerHTML = texto;
-  li.appendChild(h5);
-  return li;
-}
-
-export const addComentarioMovies = (item) => {
-
-
-  const divTemplateComentario = document.createElement('div');
-
-  const sectionTempleteComentario = document.createElement('section');
-  sectionTempleteComentario.classList.add('comentario');
-  divTemplateComentario.innerHTML = `
-
-      <img src="${item.imageUrl}" alt="Imagem do Filme" itemprop="${item.name}" class="image__card"/>
-      <dd itemprop="name" class="name__card">${item.name}</dd>
-      <textarea class="txtarea__chatGroup" readOnly=true cols="60" rows="8" style="resize:none"></textarea>
-  `;
-
-  return divTemplateComentario;
-}
-
-export const userOnline = () => {
+const createListaMovieOnline = () => {
   const ul = document.createElement('ul');
   ul.classList.add('container__user__online');
 
@@ -131,6 +131,5 @@ export const userOnline = () => {
 
   return ul;
 };
-
 
 export default ChatGroup;

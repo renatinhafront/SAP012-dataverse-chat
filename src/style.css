@@ -441,6 +441,7 @@ p.description__chat__individual {
   border: none;
   margin-top: 10px;
   font-family: "Lato";
+  overflow: auto;
 
 }
 

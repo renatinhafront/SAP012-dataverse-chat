@@ -7,7 +7,9 @@ export function Chat(props) {
   const urlParams = new URLSearchParams(window.location.search);
   const myParam = urlParams.get('id');
 
-  const item = dataMovie.find((movie) => movie.id === props.id || myParam);
+  // const item = dataMovie.find((movie) => movie.id === props.id || myParam);
+
+  const item = dataMovie.find(movie => (props.id ? movie.id === props.id : myParam));
 
   const divTemplateChat = document.createElement('div');
   divTemplateChat.innerHTML = `

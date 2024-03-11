@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
 import dataMovie from '../data/dataset.js';
 import { createQuestion, createResponse } from './Commons.js';

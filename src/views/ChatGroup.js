@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import dataMovie from '../data/dataset.js';
 import { getApiKey } from '../lib/apiKey.js';
 import { communicateWithOpenAI } from '../lib/openAIApi.js';

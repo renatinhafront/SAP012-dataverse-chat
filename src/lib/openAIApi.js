@@ -2,7 +2,7 @@ import { getApiKey } from "./apiKey.js";
 
 const url = 'https://api.openai.com/v1/chat/completions';
 
-export const communicateWithOpenAI = (texto) => {
+export const communicateWithOpenAI = (texto, movie) => {
   const apiKey = getApiKey();
 
   const requestOptions = {
@@ -15,12 +15,17 @@ export const communicateWithOpenAI = (texto) => {
     body: JSON.stringify({
       messages: [
         {
+          role: "system",
+          content: `Agora você é um assistente de Filmes. Responda as perguntas sobre ${movie}.`
+        },
+        {
           role: "user",
           content: texto
         }
+
       ],
       model: 'gpt-4',
-      max_tokens: 2048,
+      max_tokens: 1500,
       temperature: 0.5
     })
   };

@@ -1,34 +1,82 @@
+/* eslint-disable no-console */
+import { communicateWithOpenAI } from '../lib/openAIApi.js';
 import dataMovie from '../data/dataset.js';
+import { createQuestion, createResponse } from './Commons.js';
+import { getApiKey } from '../lib/apiKey.js';
 
 export function Chat(props) {
-  const item = dataMovie.find((movie) => movie.id === props.id);
+  const urlParams = new URLSearchParams(window.location.search);
+  const myParam = urlParams.get('id');
+
+
+  const item = dataMovie.find(movie => (props.id ? movie.id === props.id :movie.id === myParam));
 
   const divTemplateChat = document.createElement('div');
   divTemplateChat.innerHTML = `
     <section class="container-chat">
-    <section class="container-details">
-        <img src="${item.imageUrl}" alt="Imagem do Filme" itemprop="${item.name}" class="image__movie"/>
+      <section class="container-details">
+        <img src="${item.imageUrl}" alt="Imagem do Filme" itemprop="${item.name}" class="image__movie" />
         ${renderDetails(item).outerHTML}
         <div class="description-movie">
-        <p class="description">${item.description}</p>
-      </div>
-    </section>
+          <p class="description__chat__individual">${item.description}</p>
+        </div>
+      </section>
       <section class="chat">
-      <h3>Iniciar Conversa</h3>
-      <div class="textarea-chat">
-        <textarea class="txtarea__chat" readOnly=true cols="75" rows="25" style="resize:none"></textarea>
-      </div>
-      <div class="input-chat">
-        <input class="inp__chat" type="text" placeholder="Escreva aqui sua pergunta.."></input>
-      </div>
+        <h3>Converse aqui com o filme:</h3>
+        <div class="item__lista__chat">
+          <p class="status__chat"></p>
+        </div>
+        <div class="input-chat">
+          <textarea class="inp__chat" placeholder="Escreva aqui sua pergunta.."></textarea>
+        </div>
       </section>
     </section>
   `;
+  const divListaComentarios = divTemplateChat.querySelector('.item__lista__chat');
+  const statusChatGpt = divTemplateChat.querySelector('.status__chat');
+
+  const textareaChat = divTemplateChat.querySelector('.inp__chat');
+
+  textareaChat.addEventListener('keydown', function (event) {
+
+    if (event.key === 'Enter' && !event.shiftKey) {
+      if (!getApiKey()) {
+        statusChatGpt.innerHTML = 'Erro, KEY não configurada'
+        textareaChat.value = ''
+        event.preventDefault();
+        return
+      }
+      statusChatGpt.style.display = 'block'
+      statusChatGpt.innerHTML = 'Carregando...'
+      textareaChat.disabled = true
+      divListaComentarios.appendChild(createQuestion(textareaChat.value))
+
+
+      communicateWithOpenAI(textareaChat.value, item.name)
+        .then(response => {
+          statusChatGpt.style.display = 'none'
+          divListaComentarios.appendChild(createResponse(response))
+          // Levar scroll para o final
+          divListaComentarios.scrollTop = divListaComentarios.scrollHeight
+        })
+        .catch(error => {
+          statusChatGpt.innerHTML = 'Erro, tente novamente mais tarde...'
+          console.error('Erro:', error);
+        })
+        .finally(() => {
+          textareaChat.value = ''
+          textareaChat.disabled = false
+          event.preventDefault();
+        })
+    }
+
+  });
 
   return divTemplateChat;
 }
 
-export const renderDetails = (item) => {
+const renderDetails = (item) => {
+
   const divDetalhesChat = document.createElement('div');
   divDetalhesChat.classList.add('details-movie');
   divDetalhesChat.innerHTML = `

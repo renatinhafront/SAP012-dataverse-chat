@@ -2,7 +2,7 @@ import { Home } from "./views/Home.js";
 import Chat from "./views/Chat.js";
 import ChatGroup from "./views/ChatGroup.js";
 import ErrorView from "./views/Error.js";
-import { setRootEl, setRoutes, onURLChange } from "./router.js";
+import { setRootEl, setRoutes, onURLChange, navigateTo } from "./router.js"
 import { setApiKey } from '../lib/apiKey.js';
 
 const routes = {
@@ -18,7 +18,8 @@ const btnKeyApi = document.querySelector(".btnKey");
 const btnSubmitKey = document.querySelector('.btnSubmitKey');
 const valueKey = document.querySelector('#valueKey');
 const dialogKey = document.querySelector('.dialogKey');
-const feedbackMessage = document.getElementById('feedbackMessage');
+const btnChatGroup = document.querySelector('.btnChatGrup')
+const btnHeaderImage = document.querySelector('.header-image')
 
 window.addEventListener('popstate', () => {
   onURLChange(window.location);
@@ -34,28 +35,23 @@ btnKeyApi.addEventListener("click", () => {
 });
 
 btnSubmitKey.addEventListener("click", () => {
-  const apiKey = valueKey.value.trim(); 
-
-  if (apiKey) {
-    setApiKey(apiKey); 
-    showFeedbackMessage('Chave da API gravada com sucesso!', 'success');
-    dialogKey.close();
-  } else {
-    showFeedbackMessage('Por favor, insira uma chave da API válida.', 'error');
-  }
+  setApiKey(valueKey.value)
+  dialogKey.close();
 });
 
-function showFeedbackMessage(message, type) {
-  feedbackMessage.textContent = message;
-  feedbackMessage.className = type;
-}
+btnChatGroup.addEventListener("click", () => {
+  window.location.href = "/chatGroup";
+});
+
+btnHeaderImage.addEventListener("click", () => {
+  navigateTo("/")
+})
 
 function alterarBanner() {
   const larguraJanela = window.innerWidth;
-  if (larguraJanela < 580) {
+  if (larguraJanela < 550) {
     imgBanner.src = 'img/banner-mobile.png';
-  }
-  else {
+  } else {
     imgBanner.src = 'img/banner.png';
   }
 }

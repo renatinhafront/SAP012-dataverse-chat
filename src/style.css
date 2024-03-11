@@ -453,7 +453,9 @@ p.description__chat__individual {
   border: none;
   background-color: #F0F0F0;
   padding: 10px;
-  font-family: "Lato";
+  font-family: "Lato-Bold", Helvetica;
+  font-size: 1em;
+  resize: none;
 }
 
 ul.lista__chat {
@@ -496,7 +498,7 @@ ul.lista__chat {
 
 .item__lista__chat__group,
 .item__lista__chat {
-  height: 280px;
+  height: 480px;
   width: 100%;
   overflow: auto;
   font-family: "Lato-Bold", Helvetica;
@@ -504,8 +506,9 @@ ul.lista__chat {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border: #ccc 2px solid;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+  margin: 10px 0 10px;
 }
 
 .box-my-question{
@@ -513,28 +516,39 @@ ul.lista__chat {
   justify-content: flex-end;
 }
 
+p.my-question{
+  font-size: 1em;
+}
+
 .box-response{
   display: flex;
   justify-content: flex-start;
 }
 
-.my-question,
-.response-message{
-  padding: 1rem;
-  border-radius: 10px;
-  color: white;
-  margin: 0;
-  font-size: 13px;
+p.response-message{
+  font-size: 1em;
 }
+
 
 .my-question{
   text-align: right;
   background-color: #949494;
+  border-radius: 10px 0px 10px 10px;
+  padding: 1rem;
+  color: white;
 }
 
 .response-message{
   text-align: left;
-  background-color: #cccccc;
+  background-color: #00172c;
+  border-radius: 0px 10px 10px 10px;
+  padding: 1rem;
+  color: white;
+}
+
+p.status__chat {
+  font-size: 1em;
+  text-align: center;
 }
 
 .item__img__titulo__group {

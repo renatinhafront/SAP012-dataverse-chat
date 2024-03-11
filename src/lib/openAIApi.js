@@ -1,28 +1,49 @@
-import axios from 'axios';
-import { getApiKey } from './apiKey.js';
+import { getApiKey } from "./apiKey.js";
 
-export const communicateWithOpenAI = async (messages) => {
-   try {
-      const apiKey = await getApiKey(); // Obtém a chave da API
-      const response = await axios.post(
-         'https://api.openai.com/v1/completions',
-         {
-            model: "text-davinci-003",
-            prompt: messages,
-            max_tokens: 150, 
-            temperature: 0.7, 
-         },
-         {
-            headers: {
-               'Content-Type': 'application/json',
-               'Authorization': `Bearer ${apiKey}`
-            }
-         }
-      );
+const url = 'https://api.openai.com/v1/chat/completions';
 
-      return response.data.choices[0].text.trim(); // Retorna a resposta da OpenAI
-   } catch (error) {
-      console.error('Erro ao se comunicar com a OpenAI:', error);
-      throw error;
-   }
-};
+export const communicateWithOpenAI = (texto, movie) => {
+  const apiKey = getApiKey();
+
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Accept': "application/json",
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      messages: [
+        {
+          role: "system",
+          content: `Agora você é o ${movie}. Deve responder como se fosse o próprio filme, levando em consideranção para o seu humor, o gênero do ${movie}.`
+        },
+        {
+          role: "user",
+          content: texto
+        }
+
+      ],
+      model: 'gpt-4',
+      max_tokens: 1500,
+      temperature: 0.7
+    })
+  };
+
+  return new Promise((resolve, reject) => {
+    fetch(url, requestOptions)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Erro ao chamar a API do OpenAI');
+
+        }
+        return response.json();
+      })
+      .then(data => {
+        resolve(data.choices[0].message.content.trim());
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}

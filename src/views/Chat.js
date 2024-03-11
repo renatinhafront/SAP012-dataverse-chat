@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
 import dataMovie from '../data/dataset.js';
 import { createQuestion, createResponse } from './Commons.js';
@@ -7,7 +8,8 @@ export function Chat(props) {
   const urlParams = new URLSearchParams(window.location.search);
   const myParam = urlParams.get('id');
 
-  const item = dataMovie.find((movie) => movie.id === props.id || myParam);
+
+  const item = dataMovie.find(movie => (props.id ? movie.id === props.id :movie.id === myParam));
 
   const divTemplateChat = document.createElement('div');
   divTemplateChat.innerHTML = `
@@ -47,11 +49,10 @@ export function Chat(props) {
       statusChatGpt.style.display = 'block'
       statusChatGpt.innerHTML = 'Carregando...'
       textareaChat.disabled = true
-
       divListaComentarios.appendChild(createQuestion(textareaChat.value))
-      textareaChat.value = ''
 
-      communicateWithOpenAI(`${textareaChat.value} ${item.name}`)
+
+      communicateWithOpenAI(textareaChat.value, item.name)
         .then(response => {
           statusChatGpt.style.display = 'none'
           divListaComentarios.appendChild(createResponse(response))
@@ -63,6 +64,7 @@ export function Chat(props) {
           console.error('Erro:', error);
         })
         .finally(() => {
+          textareaChat.value = ''
           textareaChat.disabled = false
           event.preventDefault();
         })

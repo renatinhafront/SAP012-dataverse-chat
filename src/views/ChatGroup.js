@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import dataMovie from '../data/dataset.js';
 import { getApiKey } from '../lib/apiKey.js';
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
@@ -39,7 +40,6 @@ export function ChatGroup() {
     if (event.key === 'Enter' && !event.shiftKey) {
       if (!getApiKey()) {
         statusChatGpt.innerHTML = 'Erro, KEY não configurada'
-        textareaChatGroup.value = ''
         event.preventDefault();
         return
       }
@@ -54,7 +54,7 @@ export function ChatGroup() {
 
       dataMovie.forEach((item) => {
         if (item.facts.isOnline) {
-          communicateWithOpenAI(`${question} ${item.name}`)
+          communicateWithOpenAI(question, item.name)
             .then(response => {
               statusChatGpt.style.display = 'none'
               divListaComentarios.appendChild(createResponse(response))
@@ -66,6 +66,7 @@ export function ChatGroup() {
               console.error('Erro:', error);
             })
             .finally(() => {
+              textareaChatGroup.value = ''
               textareaChatGroup.disabled = false
               event.preventDefault();
             })

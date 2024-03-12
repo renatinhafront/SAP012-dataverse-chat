@@ -31,19 +31,32 @@ export const communicateWithOpenAI = (texto, movie) => {
   };
 
   return new Promise((resolve, reject) => {
+    //Fazendo a chamada
     fetch(url, requestOptions)
+    //Resposta da chamada
       .then(response => {
+        //Não retorno o sucesso (validação 200)
         if (!response.ok) {
+          //Throw new ele par de executar e retorna o erro
           throw new Error('Erro ao chamar a API do OpenAI');
-
         }
+        //Retorna o json
         return response.json();
       })
       .then(data => {
+        //Retorna o content com o trim que remove espaços em branco
         resolve(data.choices[0].message.content.trim());
       })
       .catch(error => {
+        //Todos os erros gerados no then caem aqui
         reject(error);
       });
   });
 }
+
+
+
+
+export const communicateWithOpenAI = (texto, movie) => {
+  const apiKey = getApiKey();
+

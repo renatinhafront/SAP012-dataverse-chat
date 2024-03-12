@@ -11,7 +11,19 @@ export const createQuestion = (question) => {
   return boxMyMessage
 }
 
-export const createResponse = (response) => {
+export const createResponse = (response, item) => {
+  const gridResponse = document.createElement('div');
+  const divImageResponse = document.createElement('div');
+  const divTextResponse = document.createElement('div');
+  divImageResponse.classList.add('image__response');
+  divImageResponse.innerHTML = `<img src="${item.imageUrl}" alt="Imagem do Filme" class="image__user__online"/>`
+  divTextResponse.classList.add('text__response');
+  gridResponse.classList.add('grid__response');
+  gridResponse.appendChild(divImageResponse);
+  gridResponse.appendChild(divTextResponse);
+
+
+
   const boxResponseMessage = document.createElement('div')
   boxResponseMessage.className = 'box-response'
 
@@ -20,6 +32,7 @@ export const createResponse = (response) => {
   chatResponse.innerHTML = response
 
   boxResponseMessage.appendChild(chatResponse)
+  divTextResponse.appendChild(boxResponseMessage)
 
-  return boxResponseMessage
+  return gridResponse
 }

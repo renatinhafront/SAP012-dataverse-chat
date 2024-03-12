@@ -1,136 +1,100 @@
 /* eslint-disable no-console */
-import dataMovie from '../data/dataset.js';
-import { getApiKey } from '../lib/apiKey.js';
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
+import dataMovie from '../data/dataset.js';
 import { createQuestion, createResponse } from './Commons.js';
+import { getApiKey } from '../lib/apiKey.js';
 
-export function ChatGroup() {
+export function Chat(props) {
+  const urlParams = new URLSearchParams(window.location.search);
+  const myParam = urlParams.get('id');
 
-  const sectionTemplateChatGroup = document.createElement('section');
-  sectionTemplateChatGroup.classList.add('container__chat__group');
 
-  const divChatGroup = document.createElement('div');
-  divChatGroup.classList.add('item__chat__group');
-  sectionTemplateChatGroup.appendChild(divChatGroup);
+  const item = dataMovie.find(movie => (props.id ? movie.id === props.id :movie.id === myParam));
 
-  const divOnlineUsers = document.createElement('div');
-  divOnlineUsers.classList.add('item__chat__user__online');
-  divOnlineUsers.appendChild(createListaMovieOnline());
-  sectionTemplateChatGroup.appendChild(divOnlineUsers);
+  const divTemplateChat = document.createElement('div');
+  divTemplateChat.innerHTML = `
+    <section class="container-chat">
+      <section class="container-details">
+        <img src="${item.imageUrl}" alt="Imagem do Filme" itemprop="${item.name}" class="image__movie" />
+        ${renderDetails(item).outerHTML}
+        <div class="description-movie">
+          <p class="description__chat__individual">${item.description}</p>
+        </div>
+      </section>
+      <section class="chat">
+        <h3>Iniciar Conversa</h3>
+        <div class="item__lista__chat">
+        <div class="question__response__chat"></div>
+        <div class="status__chat__group">
+            <p class="status__chat"></p>
+          </div>
+        </div>
 
-  const divTituloChatGroup = document.createElement('div');
-  divTituloChatGroup.classList.add('titulo-chatGroup');
-  divTituloChatGroup.appendChild(addTitle());
-  divChatGroup.appendChild(divTituloChatGroup);
+        <div class="input-chat">
+          <textarea class="inp__chat" placeholder="Escreva aqui sua pergunta.."></textarea>
+        </div>
+      </section>
+    </section>
+  `;
 
-  const divListaComentarios = document.createElement('div');
-  const statusChatGpt = document.createElement('p');
-  divListaComentarios.classList.add('item__lista__chat__group');
-  divChatGroup.appendChild(divListaComentarios);
-  divListaComentarios.appendChild(statusChatGpt);
+  // const divListaComentarios = divTemplateChat.querySelector('.item__lista__chat');
+  const statusChatGpt = divTemplateChat.querySelector('.status__chat');
+  const divQuestionResponse = divTemplateChat.querySelector('.question__response__chat');
 
-  const textareaChatGroup = document.createElement('textarea');
-  textareaChatGroup.classList.add('textarea__chatGroup');
-  textareaChatGroup.placeholder = 'Escreva aqui sua pergunta..'
-  divChatGroup.appendChild(textareaChatGroup);
+  const textareaChat = divTemplateChat.querySelector('.inp__chat');
 
-  // Ações a serem executadas quando o Enter for pressionado
-  textareaChatGroup.addEventListener('keydown', function (event) {
+  textareaChat.addEventListener('keydown', function (event) {
 
     if (event.key === 'Enter' && !event.shiftKey) {
       if (!getApiKey()) {
         statusChatGpt.innerHTML = 'Erro, KEY não configurada'
+        textareaChat.value = ''
         event.preventDefault();
         return
       }
-
       statusChatGpt.style.display = 'block'
-      statusChatGpt.innerHTML = 'Carregando...'
-      textareaChatGroup.disabled = true
+      statusChatGpt.innerHTML = 'Digitando...'
+      textareaChat.disabled = true
+      divQuestionResponse.appendChild(createQuestion(textareaChat.value))
 
-      divListaComentarios.appendChild(createQuestion(textareaChatGroup.value))
-      const question = textareaChatGroup.value
-      textareaChatGroup.value = ''
 
-      dataMovie.forEach((item) => {
-        if (item.facts.isOnline) {
-          communicateWithOpenAI(question, item.name)
-            .then(response => {
-              statusChatGpt.style.display = 'none'
-              divListaComentarios.appendChild(createResponse(response))
-              // Levar scroll para o final
-              divListaComentarios.scrollTop = divListaComentarios.scrollHeight
-            })
-            .catch(error => {
-              statusChatGpt.innerHTML = 'Erro, tente novamente mais tarde...'
-              console.error('Erro:', error);
-            })
-            .finally(() => {
-              textareaChatGroup.value = ''
-              textareaChatGroup.disabled = false
-              event.preventDefault();
-            })
-
-        }
-      });
+      communicateWithOpenAI(textareaChat.value, item.name)
+        .then(response => {
+          statusChatGpt.style.display = 'none'
+          divQuestionResponse.appendChild(createResponse(response, item))
+          // Levar scroll para o final
+          divQuestionResponse.scrollTop = divQuestionResponse.scrollHeight
+        })
+        .catch(error => {
+          statusChatGpt.innerHTML = 'Erro, tente novamente mais tarde...'
+          console.error('Erro:', error);
+        })
+        .finally(() => {
+          textareaChat.value = ''
+          textareaChat.disabled = false
+          event.preventDefault();
+        })
     }
+
   });
 
-  return sectionTemplateChatGroup;
+  return divTemplateChat;
 }
 
-const addTitle = () => {
+const renderDetails = (item) => {
 
-  const divTituloChatGroup = document.createElement('div');
-  divTituloChatGroup.classList.add('container__title');
-  divTituloChatGroup.innerHTML = `
-    <section class="grid__user__online">
-        <div class="item_user_online logo_user_online">
-          <img src="../img/favicon.png" class="item__img__titulo__group" alt="ícone de identificação da página"</img>
-        </div>
-
-        <div class="item_user_online name_user_online">
-        <h3 class="title__group">The Best Movies</h3>
-        </div>
-
-        <div class="item_user_online description_user_online">
-          <p class="sub__title__group">Conheça sobre os melhores filmes da história</p>
-        </div>
-      </section>
-
-`;
-  return divTituloChatGroup;
+  const divDetalhesChat = document.createElement('div');
+  divDetalhesChat.classList.add('details-movie');
+  divDetalhesChat.innerHTML = `
+    <dd itemprop="sort-order" class="imDbRating">${item.facts.imDbRating} / 10 <img src="./img/icon-star.svg" alt="Star icon" /></dd>
+    <dd itemprop="name" class="name__card">${item.name}</dd>
+    <dd itemprop="releaseYear" class="releaseYear">${item.facts.releaseYear} - ${item.facts.runtimeStr}</dd>
+    <dd itemprop="shortDescription" class="shortDescription">${item.shortDescription}</dd>
+    <dd itemprop="movieGender" class="movieGender">${item.facts.movieGender}</dd>
+    <dd itemprop="directorsName" class="releaseYear">Diretores: ${item.facts.directorsName}.</dd>
+    <dd itemprop="movieStars" class="releaseYear">Principais autores: ${item.facts.movieStars}.</dd>
+  `;
+  return divDetalhesChat;
 }
 
-const createListaMovieOnline = () => {
-  const ul = document.createElement('ul');
-  ul.classList.add('container__user__online');
-
-  dataMovie.forEach((item) => {
-    if (item.facts.isOnline) {
-      const li = document.createElement('li');
-      li.classList.add('container__user__online__item');
-      li.innerHTML = `
-      <section class="grid__user__online">
-        <div class="item_user_online logo_user_online">
-          <img src="${item.imageUrl}" alt="Imagem do Filme" class="image__user__online"/>
-        </div>
-
-        <div class="item_user_online name_user_online">
-        <p class="font__medium">${item.name}</p>
-        </div>
-
-        <div class="item_user_online description_user_online">
-        <p class="description__user__online">${item.shortDescription}</p>
-        </div>
-      </section>
-      <hr/>
-    `;
-      ul.appendChild(li);
-    }
-  });
-
-  return ul;
-};
-
-export default ChatGroup;
+export default Chat;

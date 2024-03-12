@@ -22,18 +22,24 @@ export function Chat(props) {
         </div>
       </section>
       <section class="chat">
-        <h3>Converse aqui com o filme:</h3>
+        <h3>Iniciar Conversa</h3>
         <div class="item__lista__chat">
-          <p class="status__chat"></p>
+        <div class="question__response__chat"></div>
+        <div class="status__chat__group">
+            <p class="status__chat"></p>
+          </div>
         </div>
+
         <div class="input-chat">
           <textarea class="inp__chat" placeholder="Escreva aqui sua pergunta.."></textarea>
         </div>
       </section>
     </section>
   `;
-  const divListaComentarios = divTemplateChat.querySelector('.item__lista__chat');
+
+  // const divListaComentarios = divTemplateChat.querySelector('.item__lista__chat');
   const statusChatGpt = divTemplateChat.querySelector('.status__chat');
+  const divQuestionResponse = divTemplateChat.querySelector('.question__response__chat');
 
   const textareaChat = divTemplateChat.querySelector('.inp__chat');
 
@@ -47,17 +53,17 @@ export function Chat(props) {
         return
       }
       statusChatGpt.style.display = 'block'
-      statusChatGpt.innerHTML = 'Carregando...'
+      statusChatGpt.innerHTML = 'Digitando...'
       textareaChat.disabled = true
-      divListaComentarios.appendChild(createQuestion(textareaChat.value))
+      divQuestionResponse.appendChild(createQuestion(textareaChat.value))
 
 
       communicateWithOpenAI(textareaChat.value, item.name)
         .then(response => {
           statusChatGpt.style.display = 'none'
-          divListaComentarios.appendChild(createResponse(response))
+          divQuestionResponse.appendChild(createResponse(response, item))
           // Levar scroll para o final
-          divListaComentarios.scrollTop = divListaComentarios.scrollHeight
+          divQuestionResponse.scrollTop = divQuestionResponse.scrollHeight
         })
         .catch(error => {
           statusChatGpt.innerHTML = 'Erro, tente novamente mais tarde...'

@@ -24,10 +24,17 @@ export function ChatGroup() {
   divChatGroup.appendChild(divTituloChatGroup);
 
   const divListaComentarios = document.createElement('div');
+  const divQuestionResponseGroup = document.createElement('div');
   const statusChatGpt = document.createElement('p');
   divListaComentarios.classList.add('item__lista__chat__group');
-  divChatGroup.appendChild(divListaComentarios);
+  divQuestionResponseGroup.classList.add('question__response__chat');
+  statusChatGpt.className = 'status__chat';
+  divListaComentarios.appendChild(divQuestionResponseGroup);
+
+  const divStatus = document.createElement('div');
+  divStatus.classList.add('status__chat');
   divListaComentarios.appendChild(statusChatGpt);
+  divChatGroup.appendChild(divListaComentarios);
 
   const textareaChatGroup = document.createElement('textarea');
   textareaChatGroup.classList.add('textarea__chatGroup');
@@ -45,10 +52,10 @@ export function ChatGroup() {
       }
 
       statusChatGpt.style.display = 'block'
-      statusChatGpt.innerHTML = 'Carregando...'
+      statusChatGpt.innerHTML = 'Digitando...'
       textareaChatGroup.disabled = true
 
-      divListaComentarios.appendChild(createQuestion(textareaChatGroup.value))
+      divQuestionResponseGroup.appendChild(createQuestion(textareaChatGroup.value))
       const question = textareaChatGroup.value
       textareaChatGroup.value = ''
 
@@ -57,9 +64,9 @@ export function ChatGroup() {
           communicateWithOpenAI(question, item.name)
             .then(response => {
               statusChatGpt.style.display = 'none'
-              divListaComentarios.appendChild(createResponse(response))
+              divQuestionResponseGroup.appendChild(createResponse(response))
               // Levar scroll para o final
-              divListaComentarios.scrollTop = divListaComentarios.scrollHeight
+              divQuestionResponseGroup.scrollTop = divListaComentarios.scrollHeight
             })
             .catch(error => {
               statusChatGpt.innerHTML = 'Erro, tente novamente mais tarde...'

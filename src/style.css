@@ -475,7 +475,8 @@ ul.lista__chat {
   margin: 5px;
   text-align: center;
   font-size: 1.5em;
-  height: 400px;
+  height: 650px;
+  /* overflow: auto; */
 }
 
 .item__chat__user__online {
@@ -484,7 +485,7 @@ ul.lista__chat {
   margin: 5px;
   text-align: left;
   font-size: 1.5em;
-  height: 300px;
+  height: 200px;
 }
 
 .titulo-chatGroup {
@@ -500,7 +501,6 @@ ul.lista__chat {
 .item__lista__chat {
   height: 480px;
   width: 100%;
-  overflow: auto;
   font-family: "Lato-Bold", Helvetica;
   padding: 1rem;
   display: flex;
@@ -509,6 +509,12 @@ ul.lista__chat {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin: 10px 0 10px;
+}
+
+.question__response__chat {
+  max-height: 90%;
+  height: 90%;
+  overflow: auto;
 }
 
 .box-my-question{
@@ -548,7 +554,7 @@ p.response-message{
 
 p.status__chat {
   font-size: 1em;
-  text-align: center;
+  text-align: left;
 }
 
 .item__img__titulo__group {

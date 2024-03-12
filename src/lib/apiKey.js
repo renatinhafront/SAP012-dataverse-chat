@@ -9,3 +9,4 @@ export const getApiKey = () => {
   return window.localStorage.getItem("API_KEY")
   // Implementa el código para obtener la API KEY desde Local Storage
 };
+

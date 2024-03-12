@@ -20,3 +20,4 @@ describe('Comunicate with OpenAI', () => {
   });
 
 });
+

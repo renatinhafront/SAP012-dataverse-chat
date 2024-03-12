@@ -61,7 +61,7 @@ export function Chat(props) {
       communicateWithOpenAI(textareaChat.value, item.name)
         .then(response => {
           statusChatGpt.style.display = 'none'
-          divQuestionResponse.appendChild(createResponse(response))
+          divQuestionResponse.appendChild(createResponse(response, item))
           // Levar scroll para o final
           divQuestionResponse.scrollTop = divQuestionResponse.scrollHeight
         })

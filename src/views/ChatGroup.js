@@ -64,7 +64,7 @@ export function ChatGroup() {
           communicateWithOpenAI(question, item.name)
             .then(response => {
               statusChatGpt.style.display = 'none'
-              divQuestionResponseGroup.appendChild(createResponse(response))
+              divQuestionResponseGroup.appendChild(createResponse(response, item))
               // Levar scroll para o final
               divQuestionResponseGroup.scrollTop = divListaComentarios.scrollHeight
             })

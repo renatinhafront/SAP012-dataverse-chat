@@ -54,9 +54,3 @@ export const communicateWithOpenAI = (texto, movie) => {
   });
 }
 
-
-
-
-export const communicateWithOpenAI = (texto, movie) => {
-  const apiKey = getApiKey();
-

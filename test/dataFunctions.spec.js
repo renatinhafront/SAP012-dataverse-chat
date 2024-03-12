@@ -1,5 +1,5 @@
-import { filterData, sortData, computeStats } from '../src/dataFunctions.js';
 import { data as fakeData } from './data.js';
+import { filterData, sortData, computeStats } from '../src/lib/dataFunctions.js';
 
 describe('filterData', () => {
   it('O conteúdo é filtrado pelo valor movieGender', () => {

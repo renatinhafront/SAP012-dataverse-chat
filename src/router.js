@@ -29,3 +29,5 @@ export const navigateTo = (pathname = "/", props = {id: ""}) => {
 export const onURLChange = (location) => {
   renderView(location.pathname, location.search);
 };
+
+export { ROUTES }

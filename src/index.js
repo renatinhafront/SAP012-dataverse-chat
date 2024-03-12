@@ -59,5 +59,3 @@ function alterarBanner() {
 window.onload = alterarBanner;
 window.onresize = alterarBanner;
 setRoutes(routes);
-
-

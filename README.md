@@ -43,11 +43,11 @@ Como um amante do cinema, eu quero acessar um site que liste os 24 filmes mais f
 
 ## Design da Interface de Usuário (Protótipo de Alta Fidelidade)
 
-1. **Protótipo do Desktop e Mobile:**
+1. **Protótipo:**
 
-<img width="400" alt="tela inicial" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/00e1413d-8e8d-49f0-a2e8-f7a09e1818be">
-<img width="400" alt="tela do chat" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/f9c1ccfc-d835-4dae-8a2d-ff97fbc1ebaf">
-<img width="400" alt="image" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/24953fb9-f569-483e-8942-8df68ec9c5b6">
+<img width="600" heigth="300" alt="tela inicial" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/00e1413d-8e8d-49f0-a2e8-f7a09e1818be">
+<img width="600" eigth="300" alt="tela do chat" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/f9c1ccfc-d835-4dae-8a2d-ff97fbc1ebaf">
+<img width="600" eigth="300" alt="image" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/24953fb9-f569-483e-8942-8df68ec9c5b6">
 
 
 2. **Protótipo de baixa fidelidade**

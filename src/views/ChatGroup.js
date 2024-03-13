@@ -2,7 +2,7 @@
 import dataMovie from '../data/dataset.js';
 import { getApiKey } from '../lib/apiKey.js';
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
-import { createQuestion, createResponse } from './Commons.js';
+import { createQuestion, createResponse, statusMovie } from './Commons.js';
 
 export function ChatGroup() {
 
@@ -114,13 +114,14 @@ const createListaMovieOnline = () => {
   ul.classList.add('container__user__online');
 
   dataMovie.forEach((item) => {
-    if (item.facts.isOnline) {
-      const li = document.createElement('li');
-      li.classList.add('container__user__online__item');
-      li.innerHTML = `
+    const li = document.createElement('li');
+    li.classList.add('container__user__online__item');
+    li.innerHTML = `
       <section class="grid__user__online">
         <div class="item_user_online logo_user_online">
-          <img src="${item.imageUrl}" alt="Imagem do Filme" class="image__user__online"/>
+          <div class="item__img__user__online">
+            <img src="${item.imageUrl}" alt="Imagem do Filme" class="image__user__online"/>
+          </div>
         </div>
 
         <div class="item_user_online name_user_online">
@@ -133,8 +134,10 @@ const createListaMovieOnline = () => {
       </section>
       <hr/>
     `;
-      ul.appendChild(li);
-    }
+    const divLogo = li.querySelector('.logo_user_online')
+    divLogo.appendChild(statusMovie(item.facts.isOnline));
+    ul.appendChild(li);
+
   });
 
   return ul;

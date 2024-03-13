@@ -14,7 +14,7 @@ export const createQuestion = (question) => {
 export const statusMovie = (isOnline) => {
   const divCheckStatus = document.createElement('div');
   divCheckStatus.className = 'status';
-  divCheckStatus.style.backgroundColor = isOnline ? 'green': 'red';
+  divCheckStatus.style.backgroundColor = isOnline ? 'green': 'grey';
   return divCheckStatus
 }
 

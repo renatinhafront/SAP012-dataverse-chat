@@ -398,6 +398,7 @@ footer p {
   float: left;
   margin: 20px 20px 20px 0px;
   width: 230px;
+  max-height: 345px;
 }
 
 section.container-details {
@@ -605,10 +606,11 @@ textarea:focus {
 
 .grid__user__online {
   display: grid;
-  grid-template-columns: 60px 56%;
+  grid-template-columns: 60px 75%;
   grid-template-areas:
     "logo_user_online name_user_online"
     "logo_user_online description_user_online";
+    cursor: pointer;
 }
 
 .name_user_online {
@@ -623,7 +625,8 @@ textarea:focus {
 .image__user__online {
   height: 50px;
   width: 50px;
-  border-radius: 30px;
+  border-radius: 25px;
+  margin: 2px 0px 0px 5px;
 }
 
 .image__response {
@@ -650,10 +653,31 @@ textarea:focus {
   text-align: left;
 }
 
+hr {
+  position: relative;
+  margin: 2px 60px;
+  width: 85%;
+}
+
 .font__medium {
   font-size: medium;
   color: #040609;
   font-weight: bold;
+}
+
+/* COMMONS */
+.status {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  z-index: 1;
+  border: #f2f0f0 solid 3px;
+  position: relative;
+  margin: 35px 0px 0px 4px;
+}
+
+.item__img__user__online {
+  float: left;
 }
 
 @media (max-width: 700px) {
@@ -685,3 +709,4 @@ textarea:focus {
 }
 
 }
+

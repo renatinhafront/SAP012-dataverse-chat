@@ -56,7 +56,11 @@ Como um amante do cinema, eu quero acessar um site que liste os 24 filmes mais f
 <img width="500" heigth="400" alt="image" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/24953fb9-f569-483e-8942-8df68ec9c5b6">
 
 
-2. **Protótipo de baixa fidelidade**
+4. **Protótipo Erro**
+
+<img width="500" heigth="400" alt="tela de erro" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/c1b3ce16-b0dc-46b7-a28f-7a17d1e0f9c7">
+
+5. **Protótipo de baixa fidelidade**
 
 
 <img width="300" heigth="300" alt="protótipo de baixa fidelidade" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/d19aade0-a371-403c-9b12-27e2dad9ca8b">

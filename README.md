@@ -1,7 +1,7 @@
 ![html5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![icons8-chatgpt-90](https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/ee673323-1469-4e38-baa1-f4a923fbdb3f)
+![icons8-chatgpt-30](https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/201ec2c8-8cd7-4478-a5b2-5676d72dad4a)
 
 # The Best Movies
 
@@ -49,9 +49,11 @@ Como um amante do cinema, eu quero acessar um site que liste os 24 filmes mais f
 <img width="400" alt="tela do chat" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/f9c1ccfc-d835-4dae-8a2d-ff97fbc1ebaf">
 <img width="400" alt="image" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/24953fb9-f569-483e-8942-8df68ec9c5b6">
 
+
 2. **Protótipo de baixa fidelidade**
 
-<img width="400" alt="protótipo de baixa fidelidade" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/d19aade0-a371-403c-9b12-27e2dad9ca8b">
+
+<img width="300" alt="protótipo de baixa fidelidade" src="https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/d19aade0-a371-403c-9b12-27e2dad9ca8b">
 
 
 ## Lista de Problemas Detectados por Meio de Testes de Usabilidade
@@ -63,16 +65,6 @@ Durante os testes de usabilidade, identificamos alguns problemas que precisam se
 2. **Falhas na Pesquisa:** Se a função de pesquisa não retornar resultados precisos ou se os filtros de pesquisa não funcionarem conforme o esperado, os usuários podem ter problemas para encontrar os filmes desejados.
 
 3. **Feedback Insuficiente:** Se o aplicativo não fornecer feedback suficiente ao usuário, como confirmações de ação ou mensagens de erro claras, os usuários podem ficar confusos sobre o que está acontecendo.
-
-# Prompt usado
-
-1. **ChatGpt que fez a geração de dados**
-
-<img width="1010" alt="Captura de Tela 2024-02-07 às 08 39 52" src="https://github.com/ThayBorges/SAP012-dataverse/assets/107226201/6d901643-cb2a-422f-86af-ac0a4c071796">
-
-2. **Bing para criar imagem**
-
-<img width="733" alt="Captura de Tela 2024-02-07 às 08 41 44" src="https://github.com/Laboratoria/SAP012-dataverse/assets/107226201/897f633c-c279-4bee-897b-2d76b91c77fa">
 
 ## Referências
 

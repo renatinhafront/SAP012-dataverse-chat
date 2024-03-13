@@ -366,6 +366,7 @@ footer p {
 .container__footer {
   max-width: 800px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 .socialIcons a {
@@ -421,7 +422,7 @@ section.chat {
   height: 386px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .description__chat__individual {
@@ -710,7 +711,7 @@ hr {
 
 }
 
-@media (max-width: 360px) {
+@media (max-width: 400px) {
 
 section.container-details {
   max-width: 550px;

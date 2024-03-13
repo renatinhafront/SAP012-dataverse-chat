@@ -1,7 +1,7 @@
+![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
 ![html5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![js](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![css3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![icons8-chatgpt-30](https://github.com/renatinhafront/SAP012-dataverse-chat/assets/107226201/201ec2c8-8cd7-4478-a5b2-5676d72dad4a)
 
 # The Best Movies
 

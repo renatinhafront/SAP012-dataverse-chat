@@ -11,6 +11,13 @@ export const createQuestion = (question) => {
   return boxMyMessage
 }
 
+export const statusMovie = (isOnline) => {
+  const divCheckStatus = document.createElement('div');
+  divCheckStatus.className = 'status';
+  divCheckStatus.style.backgroundColor = isOnline ? 'green': 'red';
+  return divCheckStatus
+}
+
 export const createResponse = (response, item) => {
   const gridResponse = document.createElement('div');
   const divImageResponse = document.createElement('div');
@@ -21,8 +28,6 @@ export const createResponse = (response, item) => {
   gridResponse.classList.add('grid__response');
   gridResponse.appendChild(divImageResponse);
   gridResponse.appendChild(divTextResponse);
-
-
 
   const boxResponseMessage = document.createElement('div')
   boxResponseMessage.className = 'box-response'

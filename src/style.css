@@ -356,6 +356,8 @@ footer {
   padding: 45px 0;
   text-align: center;
   width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 footer p {
@@ -707,6 +709,10 @@ hr {
   flex-wrap: wrap;
   background-color: #f2f0f0;
   border: none;
+}
+
+footer {
+  position: relative;
 }
 
 }

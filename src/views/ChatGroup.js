@@ -3,6 +3,7 @@ import dataMovie from '../data/dataset.js';
 import { getApiKey } from '../lib/apiKey.js';
 import { communicateWithOpenAI } from '../lib/openAIApi.js';
 import { createQuestion, createResponse, statusMovie } from './Commons.js';
+import { navigateTo } from '../router.js';
 
 export function ChatGroup() {
 
@@ -44,6 +45,8 @@ export function ChatGroup() {
   // Ações a serem executadas quando o Enter for pressionado
   textareaChatGroup.addEventListener('keydown', function (event) {
 
+    const divQuestionResponseGroup = document.querySelector('.question__response__chat');
+
     if (event.key === 'Enter' && !event.shiftKey) {
       if (!getApiKey()) {
         statusChatGpt.innerHTML = 'Erro, KEY não configurada'
@@ -66,7 +69,7 @@ export function ChatGroup() {
               statusChatGpt.style.display = 'none'
               divQuestionResponseGroup.appendChild(createResponse(response, item))
               // Levar scroll para o final
-              divQuestionResponseGroup.scrollTop = divListaComentarios.scrollHeight
+              divQuestionResponseGroup.scrollTop = divQuestionResponseGroup.scrollHeight
             })
             .catch(error => {
               statusChatGpt.innerHTML = 'Erro, tente novamente mais tarde...'
@@ -113,6 +116,9 @@ const createListaMovieOnline = () => {
   const ul = document.createElement('ul');
   ul.classList.add('container__user__online');
 
+  const moviesOnline = [];
+  const moviesOffline = [];
+
   dataMovie.forEach((item) => {
     const li = document.createElement('li');
     li.classList.add('container__user__online__item');
@@ -125,22 +131,32 @@ const createListaMovieOnline = () => {
         </div>
 
         <div class="item_user_online name_user_online">
-        <p class="font__medium">${item.name}</p>
+          <p class="font__medium">${item.name}</p>
         </div>
 
         <div class="item_user_online description_user_online">
-        <p class="description__user__online">${item.shortDescription}</p>
+          <p class="description__user__online">${item.shortDescription}</p>
         </div>
       </section>
       <hr/>
     `;
+    li.addEventListener("click", () => navigateTo("/chat", {id: item.id}));
+
     const divLogo = li.querySelector('.logo_user_online')
     divLogo.appendChild(statusMovie(item.facts.isOnline));
-    ul.appendChild(li);
 
+    if (item.facts.isOnline) {
+      moviesOnline.push(li);
+    } else {
+      moviesOffline.push(li);
+    }
   });
+
+  moviesOnline.forEach(li => ul.appendChild(li));
+  moviesOffline.forEach(li => ul.appendChild(li));
 
   return ul;
 };
+
 
 export default ChatGroup;

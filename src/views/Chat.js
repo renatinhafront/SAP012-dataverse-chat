@@ -22,7 +22,7 @@ export function Chat(props) {
         </div>
       </section>
       <section class="chat">
-        <h3>Iniciar Conversa</h3>
+        <h3>Converse com o filme:</h3>
         <div class="item__lista__chat">
         <div class="question__response__chat"></div>
         <div class="status__chat__group">

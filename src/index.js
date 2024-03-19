@@ -27,7 +27,6 @@ window.addEventListener('popstate', () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   setRootEl(root);
-  console.log(window.location.pathname)
   onURLChange(window.location);
 });
 

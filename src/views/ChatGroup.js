@@ -158,5 +158,4 @@ const createListaMovieOnline = () => {
   return ul;
 };
 
-console.log(window.location.pathname)
 export default ChatGroup;

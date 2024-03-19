@@ -97,4 +97,5 @@ const renderDetails = (item) => {
   return divDetalhesChat;
 }
 
+console.log(window.location.pathname)
 export default Chat;

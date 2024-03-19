@@ -30,23 +30,28 @@ window.addEventListener("DOMContentLoaded", () => {
   onURLChange(window.location);
 });
 
+//Modal para add ou atualizar key
 btnKeyApi.addEventListener("click", () => {
   dialogKey.showModal();
 });
 
+//para fechar o modal
 btnSubmitKey.addEventListener("click", () => {
   setApiKey(valueKey.value)
   dialogKey.close();
 });
 
+//para redirecionar para chat
 btnChatGroup.addEventListener("click", () => {
   window.location.href = "/chatGroup";
 });
 
+//para redirecionar para home
 btnHeaderImage.addEventListener("click", () => {
   navigateTo("/")
 })
 
+//alterar banner de acordo com a largura
 function alterarBanner() {
   const larguraJanela = window.innerWidth;
   if (larguraJanela < 550) {

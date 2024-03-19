@@ -43,7 +43,7 @@ btnSubmitKey.addEventListener("click", () => {
 
 //para redirecionar para chat
 btnChatGroup.addEventListener("click", () => {
-  window.location.href = "/chatGroup";
+  navigateTo("/chatGroup")
 });
 
 //para redirecionar para home

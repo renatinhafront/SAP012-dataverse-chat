@@ -100,7 +100,6 @@ main {
   display: flex;
   flex-direction: column;
   min-height: 865px;
-  min-height: 865px;
 }
 
 nav {
@@ -360,10 +359,6 @@ footer {
   bottom: 0;
   max-width: 1475px;
   margin: 0 auto;
-  position: relative;
-  bottom: 0;
-  max-width: 1475px;
-  margin: 0 auto;
 }
 
 footer p {
@@ -374,7 +369,6 @@ footer p {
 .container__footer {
   max-width: 800px;
   margin: 0 auto;
-  padding: 0 10px;
   padding: 0 10px;
 }
 
@@ -409,7 +403,6 @@ footer p {
   margin: 20px 20px 20px 0px;
   width: 230px;
   max-height: 345px;
-  max-height: 345px;
 }
 
 section.container-details {
@@ -432,7 +425,6 @@ section.chat {
   height: 386px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   justify-content: space-between;
 }
 
@@ -480,17 +472,13 @@ ul.lista__chat {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  justify-content: flex-start;
 }
 
 .item__chat__group {
   width: 68%;
-  width: 68%;
   text-align: center;
   font-size: 1.5em;
   height: 650px;
-  display: flex;
-  flex-direction: column;
   display: flex;
   flex-direction: column;
 }
@@ -499,15 +487,8 @@ ul.lista__chat {
   overflow: auto;
   width: 31%;
   margin: 74px 0 0 0;
-  width: 31%;
-  margin: 74px 0 0 0;
   text-align: left;
   font-size: 1.5em;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  background-color: #f2f0f0;
   height: 550px;
   display: flex;
   flex-direction: column;
@@ -537,21 +518,7 @@ ul.lista__chat {
 }
 
 .item__lista__chat {
-    height: 480px;
-    font-family: "Lato-Bold", Helvetica;
-    padding: 0 0 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 10px;
-    flex-wrap: wrap;
-    border-top: solid 2px #f2f0f0;
-}
-
-.item__lista__chat {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  font-size: 1.2em;
-  margin-bottom: 10px;
   font-size: 1.2em;
   margin-bottom: 10px;
 }
@@ -569,7 +536,6 @@ ul.lista__chat {
 
 p.my-question{
   font-size: 0.8em;
-  font-size: 0.8em;
 }
 
 .box-response{
@@ -579,12 +545,8 @@ p.my-question{
 
 p.response-message{
   font-size: 0.8em;
-  font-size: 0.8em;
 }
 
-.grid__response {
-  margin-top: 10px;
-}
 .grid__response {
   margin-top: 10px;
 }
@@ -598,9 +560,6 @@ p.response-message{
   margin-top: 10px;
   margin: 10px 10px 0 0;
   max-width: 90%;
-  margin-top: 10px;
-  margin: 10px 10px 0 0;
-  max-width: 90%;
 }
 
 .response-message{
@@ -609,7 +568,6 @@ p.response-message{
   border-radius: 0px 10px 10px 10px;
   padding: 1rem;
   color: white;
-  max-width: 90%;
   max-width: 90%;
 }
 
@@ -631,22 +589,9 @@ p.status__chat {
 
 .sub__title__group {
   font-size: 16px;
-  font-size: 16px;
 }
 
 .textarea__chatGroup {
-    height: 70px;
-    background: rgb(242, 240, 240);
-    padding: 10px;
-    resize: none;
-    font-family: "Lato-Bold", Helvetica;
-    display: flex;
-    border: none;
-    font-size: 0.8em;
-}
-
-textarea:focus {
-  outline: none;
     height: 70px;
     background: rgb(242, 240, 240);
     padding: 10px;
@@ -666,11 +611,9 @@ textarea:focus {
 .grid__user__online {
   display: grid;
   grid-template-columns: 60px 75%;
-  grid-template-columns: 60px 75%;
   grid-template-areas:
     "logo_user_online name_user_online"
     "logo_user_online description_user_online";
-    cursor: pointer;
     cursor: pointer;
 }
 
@@ -686,13 +629,6 @@ textarea:focus {
 .image__user__online {
   height: 50px;
   width: 50px;
-  border-radius: 25px;
-  margin: 2px 0px 0px 5px;
-}
-
-.image__response {
-  width: 60px;
-  float: left;
   border-radius: 25px;
   margin: 2px 0px 0px 5px;
 }
@@ -717,15 +653,8 @@ textarea:focus {
 
 .container__user__online__item {
   max-width: 99%;
-  max-width: 99%;
   margin: 2px;
   text-align: left;
-}
-
-hr {
-  position: relative;
-  margin: 2px 60px;
-  width: 85%;
 }
 
 hr {
@@ -738,21 +667,6 @@ hr {
   font-size: medium;
   color: #040609;
   font-weight: bold;
-}
-
-/* COMMONS */
-.status {
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  z-index: 1;
-  border: #f2f0f0 solid 3px;
-  position: relative;
-  margin: 35px 0px 0px 4px;
-}
-
-.item__img__user__online {
-  float: left;
 }
 
 /* COMMONS */
@@ -799,41 +713,6 @@ hr {
 }
 
 }
-
-@media (max-width: 400px) {
-
-section.container-details {
-  max-width: 550px;
-  min-width: 338px;
-  margin: 15px;
-}
-
-}
-
-
-  .item__chat__group {
-    width: 100%;
-    text-align: center;
-    font-size: 1.5em;
-    height: 650px;
-    display: flex;
-    flex-direction: column;
-}
-
-.item__chat__user__online {
-  overflow: auto;
-  width: 100%;
-  margin: 12px 0 0 0;
-  text-align: left;
-  font-size: 1.5em;
-  height: 550px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  background-color: #f2f0f0;
-  border: none;
-}
-
 
 @media (max-width: 400px) {
 

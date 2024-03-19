@@ -54,7 +54,3 @@ export const communicateWithOpenAI = (texto, movie) => {
   });
 }
 
-
-
-
-

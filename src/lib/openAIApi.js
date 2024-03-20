@@ -7,11 +7,16 @@ export const communicateWithOpenAI = (texto, movie) => {
 
   const requestOptions = {
     method: 'POST',
+    // cabeçalho são utilizados na requisição
     headers: {
+      //accept só aceita o json
       'Accept': "application/json",
+      //o conteudo que estou enviando é do tipo json
       'Content-Type': 'application/json',
+      //a chave de autenticação e o token da API
       'Authorization': `Bearer ${apiKey}`
     },
+    //corpo da requisição
     body: JSON.stringify({
       messages: [
         {
@@ -30,25 +35,28 @@ export const communicateWithOpenAI = (texto, movie) => {
     })
   };
 
+  //new promise PROMESSA DE RETORNO
   return new Promise((resolve, reject) => {
-    //Fazendo a chamada
+    //fetch(buscar) é uma funcao que faz a chamada http
     fetch(url, requestOptions)
-    //Resposta da chamada
+    //.then(então) quer que faça a checagem de sucesso
       .then(response => {
-        //Não retorno o sucesso (validação 200)
+        //Se retornar a resposta é erro cai no if e depois no catch
         if (!response.ok) {
-          //Throw new ele par de executar e retorna o erro
+          //Throw new Error ele par de executar e retorna o erro caindo no catch
           throw new Error('Erro ao chamar a API do OpenAI');
         }
         //Retorna o json
         return response.json();
       })
+      //then
       .then(data => {
-        //Retorna o content com o trim que remove espaços em branco
+        // resolve a promessa e retorna o  content com o trim que remove espaços em branco
         resolve(data.choices[0].message.content.trim());
       })
+      //catch(erro) captura o erro
       .catch(error => {
-        //Todos os erros gerados no then caem aqui
+        // rejeita a promessa e todos os erros gerados
         reject(error);
       });
   });

@@ -26,7 +26,7 @@ export const renderView = (pathname, props = {id: ""}) => {
   rootEl.appendChild(element);
 };
 
-//navigateTo atualiza a URL do navegador e renderiza a visualização correspondente
+//navigateTo atualiza a URL do navegador quando eu uso o F5
 export const navigateTo = (pathname = "/", props = {id: ""}) => {
   //pushState() guardar a página no histórico
   window.history.pushState(null, null, `${pathname}?id=${props.id}`);
@@ -34,7 +34,7 @@ export const navigateTo = (pathname = "/", props = {id: ""}) => {
   renderView(pathname, props);
 };
 
-//onURLChange e uma função responsável por lidar com a mudança de URL
+//onURLChange e uma função responsável por atualizar a barra de endereço quando eu digito na barra de endereço
 export const onURLChange = (location) => {
   //location.pathname representa o caminho da rota a ser renderizada
   //location.search representa os parâmetros da rota

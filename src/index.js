@@ -27,6 +27,8 @@ window.addEventListener('popstate', () => {
 
 window.addEventListener("DOMContentLoaded", () => {
   setRootEl(root);
+  //onURLChange faz a renderização da visualização de acordo com alterações na URL
+  //window.location representa o caminho da rota a ser renderizada
   onURLChange(window.location);
 });
 

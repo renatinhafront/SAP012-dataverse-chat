@@ -10,33 +10,31 @@ export const setRoutes = (routes) => {
   //mapeia nomes de rota para funções de renderização
   ROUTES = routes
 };
-//dois parâmetros: pathname, que é uma string representando o caminho da rota a ser renderizada,
-//e props é um objeto opcional contendo propriedades adicionais, com um valor padrão de um objeto vazio {id: ""}
+
 export const renderView = (pathname, props = {id: ""}) => {
-  //limpa o conteúdo atual do elemento DOM principal e, em seguida, procura pela função de renderização correspondente à rota especificada
+  //limpa o conteúdo principal
   rootEl.textContent = ""
+  //armazena a rota
   let routeFunc = ROUTES[pathname]
   if (!routeFunc) {
     routeFunc = ROUTES["/error"]
   }
 
-  //DOM que será renderizado na tela
+  //criando um elemento
   const element = routeFunc(props);
   //adiciona o elemento renderizado ao elemento DOM principal
   rootEl.appendChild(element);
 };
 
-//navigateTo atualiza a URL do navegador e renderiza a visualização correspondente
-//pathname é uma string definido como /
-//props: um objeto vazio
+//navigateTo atualiza a URL do navegador quando eu uso o F5
 export const navigateTo = (pathname = "/", props = {id: ""}) => {
-  //window.history.pushState() atualiza o historico
+  //pushState() guardar a página no histórico
   window.history.pushState(null, null, `${pathname}?id=${props.id}`);
-  //renderizar a visualização da rota
+  //renderiza de acordo com a rota
   renderView(pathname, props);
 };
 
-//onURLChange e uma função responsável por lidar com a mudança de URL
+//onURLChange e uma função responsável por atualizar a barra de endereço quando eu digito na barra de endereço
 export const onURLChange = (location) => {
   //location.pathname representa o caminho da rota a ser renderizada
   //location.search representa os parâmetros da rota
